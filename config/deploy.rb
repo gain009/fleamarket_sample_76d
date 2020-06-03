@@ -2,8 +2,8 @@
 lock '3.14.0'
 
 # 自身のアプリ名、リポジトリ名を記述
-set :application, 'アプリ名'
-set :repo_url,  'git@github.com:githubのユーザー名/リポジトリ名.git'
+set :application, 'fleamarket_sample_76d'
+set :repo_url,  'AIKIHIGASHI/fleamarket_sample_76d.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
@@ -12,7 +12,7 @@ set :rbenv_ruby, '2.5.1'
 
 # chat-spaceで使ったpemを指定
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/xxx.pem']
+                  keys: ['~/.ssh/deploytest.pem']
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
