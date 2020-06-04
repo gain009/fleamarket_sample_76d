@@ -1,0 +1,128 @@
+.body {
+  height: 100%;
+  width: 100vw;
+}
+
+li {
+  display: inline-block;
+  text-align: center;
+  font-size:15px;
+  color: #ccc;
+  font-weight: 600;
+}
+
+
+
+.signIn {
+  height: 100%;
+  width: 100vw;
+  background-color: #f5f5f5;
+  .header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    &__image {
+      width: 300px;
+      height: 100px;
+      margin-left: calc(100% - 75%);
+    }
+    &__progress {
+      height: 50px;
+      padding: 30px 0 0 44px;
+      border: 0;
+      .header__progress__text__active {
+        color: red;
+        font-weight: 600;
+      }
+      .header__progress__round__passive {
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: #ccc;
+        border-radius: 50%;
+      }
+      .header__progress__round__active {
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: red;
+        border-radius: 50%;
+      }
+      .header__progress__text {
+        .header__progress__round__passive {
+          width: 12px;
+          height: 12px;
+          margin: 8px auto 0;
+          background: #ccc;
+          border-radius: 50%;
+        }
+      }
+    }
+
+  }
+
+
+
+
+
+
+  .input {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    &__name {
+      font-size: 30px;
+      text-align: center;
+    }
+    &__group {
+      padding: 50px;
+      width: 67%;
+      margin: 0 auto;
+      &__content {
+        margin: 20px 15px;
+        label {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        span {
+          font-size: 12px;
+          color: white;
+          background-color: red;
+          padding: 2px 4px;
+          border-radius: 2px;
+        }
+        input {
+          height: 20px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        
+      }
+    }
+    
+  }
+    button {
+      background: #3CCACE;
+      border: 1px solid #3CCACE;
+      color: #fff;
+      
+
+      display: block;
+      width: 100%;
+      line-height: 40px;
+      font-size: 14px;
+      border: 1px solid transparent;
+    }
+
+    
+  
+  .footer {
+    height: 100px;
+    width: 100%;
+  }
+}

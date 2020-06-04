@@ -1,0 +1,169 @@
+.signIn
+  .header
+    .header__image
+      = image_tag "logo.png", size: "300x100"
+    %nav.header__progress
+      %ol
+        %li.header__progress__text__active{ id: "first" }
+          会員情報
+          .header__progress__round__active
+        %li.header__progress__text
+          送付先住所入力
+          .header__progress__round__passive
+        %li.header__progress__text{ id: "end" }
+          登録完了
+          .header__progress__round__passive
+
+  .input
+    %h1.input__name
+      会員情報入力
+    %form.input__group
+      .input__group__content
+        %label.input__group__label
+          ニックネーム
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "例）フリマ太郎ゴンザレス"}
+
+      .input__group__content
+        %label.input__group__label
+          メールアドレス
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "email", class: "input__group__box", placeholder: "例）hurima@hurima.com"}
+
+      .input__group__content
+        %label.input__group__label
+          パスワード
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "email", class: "input__group__box", placeholder: "PC,携帯どちらでも可"}
+            
+      .input__group__content
+        %label.input__group__label
+          お名前（全角）
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "first-name", class: "input__group__box", placeholder: "例）笹錦"}
+        %input{type: "last-name", class: "input__group__box", placeholder: "例）太郎"}
+      .input__group__content
+        %label.input__group__label
+          お名前（カナ）
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "first-name", class: "input__group__box", placeholder: "例）ササニシキ"}
+        %input{type: "last-name", class: "input__group__box", placeholder: "例）タロウ"}
+      
+      .input__group__content
+        %label.input__group__label
+          生年月日
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "date", class: "input__group__box"}
+        
+      
+      .input__group__content__btn
+        %button.btn
+          次に進む
+  .footer
+
+
+
+
+
+.signIn
+  .header
+    .header__image
+      = image_tag "logo.png", size: "300x100"
+    %nav.header__progress
+      %ol
+        %li.header__progress__text__passive{ id: "first" }
+          会員情報
+          .header__progress__round__passive
+        %li.header__progress__text__active
+          送付先住所入力
+          .header__progress__round__active
+        %li.header__progress__text{ id: "end" }
+          登録完了
+          .header__progress__round__passive
+  .input
+    %h1.input__name
+      送付先住所入力
+    %form.input__group
+      .input__group__content
+        %label.input__group__label
+          送付先氏名
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "first-name", class: "input__group__box", placeholder: "例）笹錦"}
+        %input{type: "last-name", class: "input__group__box", placeholder: "例）太郎"}
+        
+      .input__group__content
+        %label.input__group__label
+          送付先氏名（カナ）
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "first-name", class: "input__group__box", placeholder: "例）ササニシキ"}
+        %input{type: "last-name", class: "input__group__box", placeholder: "例）タロウ"}
+
+      .input__group__content
+        %label.input__group__label
+          郵便番号
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "ハイフンなし"}
+      
+      .input__group__content
+        %label.input__group__label
+          都道府県
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "例）大阪府"}
+
+      .input__group__content
+        %label.input__group__label
+          市区町村
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "例）東大阪市"}
+       
+      .input__group__content
+        %label.input__group__label
+          番地
+        %span.input__group__required
+          必須
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "例）松原1-4-1"}
+      
+      .input__group__content
+        %label.input__group__label
+          建物名
+        %span.input__group__any
+          任意
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "例）東堂ビルF９"}
+
+      .input__group__content
+        %label.input__group__label
+          電話番号
+        %span.input__group__any
+          任意
+        %br
+        %input{type: "text", class: "input__group__box", placeholder: "例）090-1234-5678"}
+
+
+      .input__group__content__btn
+        %button.input__group__btn
+          登録する
+  .footer
