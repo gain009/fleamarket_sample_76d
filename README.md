@@ -19,8 +19,8 @@
 
 ### Association
 - has_many :items
-- has_one :destinations
-- has_one :cards
+- has_one :destination
+- has_one :card
 
 ## destinationsテーブル
 |Column|Type|Options|
@@ -37,7 +37,7 @@
 |phone_number|string||
 |user_id|integer|null: false, foreign_key: true, index: true|
 ### Association
-- belongs_to :users
+- belongs_to :user
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -46,12 +46,12 @@
 |customer_id|string|null: false|
 |card_id|string|null: false|
 ### Association
-- belongs_to :users
+- belongs_to :user
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_name|string|null: false|
+|name|string|null: false|
 |price|string|null: false|
 |description|string|null: false|
 |status|string|null: false|
@@ -66,9 +66,9 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :images
-- belongs_to :users
-- belongs_to :categorys
-- belongs_to :brands
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
 
 ## categorysテーブル
 |Column|Type|Options|
@@ -84,11 +84,11 @@
 |image|string|null: false|
 |product_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :items
+- belongs_to :item
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|index: true|
+|name|string|index: true|
 ### Association
 - has_many :items
