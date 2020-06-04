@@ -1,7 +1,7 @@
 # README
 
 ## ER図
-<img width="451" alt="8984708e9a2241f0e601a43237283a28" src="https://user-images.githubusercontent.com/64832157/83719275-afd97200-a671-11ea-89bb-58cd6b79c60a.png">
+<img width="464" alt="2ce88dca04efb449ceec948a1e93fb0e" src="https://user-images.githubusercontent.com/64832157/83729971-64c85a80-a683-11ea-975e-891d61a896a5.png">
 
 ## usersテーブル
 |Column|Type|Options|
@@ -18,7 +18,7 @@
 |birth_day|date|null: false|
 
 ### Association
-- has_many :products
+- has_many :items
 - has_one :destinations
 - has_one :cards
 
@@ -48,7 +48,7 @@
 ### Association
 - belongs_to :users
 
-## productsテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_name|string|null: false|
@@ -76,7 +76,7 @@
 |name|string|null: false|
 |ancestry|string||
 ### Association
-- has_many :products
+- has_many :items
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -84,11 +84,11 @@
 |image|string|null: false|
 |product_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :products
+- belongs_to :items
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |brand_name|string|index: true|
 ### Association
-- has_many :products
+- has_many :items
