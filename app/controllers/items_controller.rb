@@ -7,4 +7,7 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def buy_confirmation
+  end
 end
