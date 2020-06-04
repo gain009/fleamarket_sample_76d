@@ -1,17 +1,29 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.signUp
+  .header
+    .header__image
+      = image_tag "/logo/logo.png", size: "300x100"
+  .input
+    %form.input__group
+      .input__group__mailadress
+        メールアドレス
+      %input{type: "text", class: "input__group__box", placeholder: "メールアドレス"}
+
+    %form.input__group
+      .input__group__pasword
+        パスワード
+      %input{type: "text", class: "input__group__box", placeholder: "password"}
+      .input__group__content__btn
+        %button.input__group__btn
+          ログイン
+  .footer
+    %ul.footer__content
+      %li.footer__content__text
+        = link_to "プライバシーポリシー"
+      %li.footer__content__text
+        = link_to "フリマ利用規約"
+      %li.footer__content__text
+        = link_to "特定商法取引に関する規約"
+      .footer__image
+        = link_to image_tag "/logo/logo.png", size: "200x50"
+      
+    

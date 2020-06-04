@@ -1,0 +1,87 @@
+input {
+  width: 90%;
+  height: 20px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  height: 30px;
+}
+
+
+
+
+.signUp {
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+  .header {
+    height: 100px;
+    width: 100%;
+    &__image {
+      width: 300px;
+      height: 100px;
+      margin: 0 auto;
+    }
+  }
+  .input {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    &__group {
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+      &__mailadress {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      &__pasword {
+        font-size: 15px;
+        font-weight: 600;
+      }
+    }
+    
+    button {
+      background: #3CCACE;
+      border: 1px solid #3CCACE;
+      color: #fff;
+      margin-top: 70px;
+
+      display: block;
+      width: 100%;
+      line-height: 40px;
+      font-size: 14px;
+      border: 1px solid transparent;
+    }
+
+  }
+  .footer {
+    height: 190px;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 40px 0;
+    text-align: center;
+    &__content {
+      width: 456px;
+      margin: 0 auto;
+      &__text {
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 12px;
+        }
+      }
+      &__image {
+        width: 200px;
+        height: 65px;
+        margin: 40px auto 0;
+      }
+    
+      
+    }
+  }
+}
