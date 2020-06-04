@@ -1,7 +1,7 @@
 # README
 
 ## ER図
-<img width="464" alt="2ce88dca04efb449ceec948a1e93fb0e" src="https://user-images.githubusercontent.com/64832157/83729971-64c85a80-a683-11ea-975e-891d61a896a5.png">
+<img width="492" alt="d1511c1d978ee87780e9ca1cf7fa3718" src="https://user-images.githubusercontent.com/64832157/83739212-4321a000-a690-11ea-8608-e78ab98acc42.png">
 
 ## usersテーブル
 |Column|Type|Options|
@@ -82,7 +82,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|product_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 
