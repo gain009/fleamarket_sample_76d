@@ -1,24 +1,94 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ER図
+<img width="478" alt="ed4182f252dff733c5068d80542d0ef3" src="https://user-images.githubusercontent.com/64832157/83718602-53c21e00-a670-11ea-8a19-6da3b6dd5724.png">
 
-Things you may want to cover:
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, index: true|
+|encrypted_password|string|null: false|
+|user_image|string||
+|introduction|text||
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birth_day|date|null: false|
 
-* Ruby version
+### Association
+- has_many :products
+- has_one :destinations
+- has_one :cards
 
-* System dependencies
+## destinationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|destination_family_name|string|null: false|
+|destination_first_name|string|null: false|
+|destination_family_name_kana|string|null: false|
+|destination_first_name_kana|string|null: false|
+|post_code|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building_name|string||
+|phone_number|string||
+|user_id|integer|null: false, foreign_key: true, index: true|
+### Association
+- belongs_to :users
 
-* Configuration
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+### Association
+- belongs_to :users
 
-* Database creation
+## productsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_name|string|null: false|
+|price|string|null: false|
+|description|string|null: false|
+|status|string|null: false|
+|size|string|null: false|
+|shipping_area|string|null: false|
+|shipping_method|string|null: false|
+|shipping_date|string|null: false|
+|prefecture_id|string|null: false|
+|judgment|string||
+|category_id|integer|null: false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :images
+- belongs_to :users
+- belongs_to :categorys
+- belongs_to :brands
 
-* Database initialization
+## categorysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string||
+### Association
+- has_many :products
 
-* How to run the test suite
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|product_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :products
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|brand_name|string|index: true|
+### Association
+- has_many :products
