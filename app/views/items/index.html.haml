@@ -1,2 +1,79 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.erb
+%header.header
+  .headerinner
+    .headermain
+      .headermain__logo
+        = link_to "#" do
+          = image_tag '/logo/logo.png', class: "headermain__logo--img"
+
+      .headermain__search
+        = form_tag("#", method: 'get') do
+          = text_field_tag :search, '', placeholder: "キーワードから探す", class: "search__input"
+          %button{type: "submit"}
+            .search__submit
+              = image_tag '/icon/icon-search 1.png', class: "search__submit__btn"
+
+    %nav.lists
+      %ul.lists__left
+        %li.lists__left__item.lists__left__item--first
+          = link_to "#" do
+            カテゴリー
+        %li.lists__left__item
+          = link_to "#" do
+            ブランド
+      %ul.lists__right
+        %li.lists__right__item.lists__right__item--login
+          = link_to "#" do
+            ログイン
+        %li.lists__right__item.lists__right__item--new
+          = link_to "#" do
+            新規登録
+
+.main
+  .top-view
+    .top-view__content
+      %h2.top-view__content__subtitle
+        %br
+        人生を変えるフリマアプリ
+      %p.top-view__content__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです。
+      .top-view__content__btn
+        = link_to image_tag('/icon/appstore.svg', class: "btn__image"), "#", class: "a-btn"
+        = link_to image_tag('/icon/google-play.svg', class: "btn__image"), "#", class: "g-btn"
+    .top-view__picture
+
+  .top-reason
+    %h2.top-reason__subtitle
+      FURIMAが選ばれる3つの理由
+    %ul.lists
+      %li.list
+        .list__pict
+          %span.list__pict--number
+            1
+          = image_tag '/pict/pict-reason-01.jpg'
+        %h3.list__text
+          %span 3分
+          ですぐ出品
+        %p.list__description
+          スマホで入力するだけで簡単に出品できる！
+      %li.list
+        .list__pict
+          %span.list__pict--number
+            2
+          = image_tag '/pict/pict-reason-02.jpg'
+        %h3.list__text
+          %span シンプル
+          で使いやすい
+        %p.list__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.list.list--last
+        .list__pict
+          %span.list__pict--number
+            3
+          = image_tag '/pict/pict-reason-03.jpg'
+        %h3.list__text
+          手数料
+          %span 業界最安
+        %p.list__description
+          最大3%でお得に出品&購入!
