@@ -1,7 +1,7 @@
 # README
 
 ## ER図
-<img width="478" alt="ed4182f252dff733c5068d80542d0ef3" src="https://user-images.githubusercontent.com/64832157/83718602-53c21e00-a670-11ea-8a19-6da3b6dd5724.png">
+<img width="451" alt="8984708e9a2241f0e601a43237283a28" src="https://user-images.githubusercontent.com/64832157/83719275-afd97200-a671-11ea-89bb-58cd6b79c60a.png">
 
 ## usersテーブル
 |Column|Type|Options|
