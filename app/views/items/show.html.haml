@@ -61,7 +61,7 @@
           (税込)
         %span.item-container__price-box__delivery-fee
           送料込み
-      = link_to "購入画面に進む", "/items/:id/buy/confirmation", {class: "item-container__buy-btn"}
+      = link_to "購入画面に進む", item_buy_confirmation_path(item_id: ":item_id"), {class: "item-container__buy-btn"}
       .item-container__explanation
         商品の説明
     .related-items

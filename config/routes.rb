@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
 
 
-  resources :items, only: :show
-  get "items/:id/buy/confirmation", to: 'items#buy_confirmation'
+  resources :items, only: :show do
+    get "buy/confirmation", to: 'items#buy_confirmation'
+  end
+  
 end
