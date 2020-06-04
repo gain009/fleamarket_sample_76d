@@ -22,8 +22,7 @@
         margin-top: 16px;
         &__image {
           .image-show img {
-            height: 300px;
-            width: 300px;
+            @include resize-img();
           }
           .image-list {
             height: 120px;
@@ -31,8 +30,7 @@
             display: flex;
             overflow: scroll;
             &__item img {
-              height: 60px;
-              width: 60px;
+              @include resize-img(60px, 60px);
             }
           }
         }
@@ -119,8 +117,7 @@
             color: #333;
           }
           &__image img {
-            height: 220px;
-            width: 220px;
+            @include resize-img(220px, 220px);
           }
           &__info {
             height: 110px;
