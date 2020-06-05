@@ -1,4 +1,4 @@
-@mixin lavel{
+@mixin label{
   margin-left: 8px;
   font-size: 12px;
   padding: 2px 4px;
@@ -20,16 +20,16 @@
     .border {
       border-bottom: 1px solid rgb(230, 230, 230);
     }    
-    lavel{
+    label{
       font-size: 14px;
       font-weight: 600;
       line-height: 1.4em;
     }
     .required{
-      @include lavel;
+      @include label;
     }
     .any{
-      @include lavel;
+      @include label;
       background-color: #afafaf;
     }
     input,select {
