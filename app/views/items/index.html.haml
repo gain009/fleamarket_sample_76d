@@ -224,3 +224,13 @@
                     0
                 %p
                   (税込)
+
+%aside.app-bottom
+  .app-bottom__inner
+    %h2.app-bottom__inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.app-bottom__inner__text
+      今すぐ無料ダウンロード
+    .app-bottom__inner__icon
+      = link_to image_tag('/icon/appstore.svg', class: "btn__image"), "#", class: "btn"
+      = link_to image_tag('/icon/google-play.svg', class: "btn__image"), "#", class: "btn"
