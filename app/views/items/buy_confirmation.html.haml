@@ -1,0 +1,51 @@
+= render 'modules/sub_header'
+%main.buy-main
+  .buy-confirmation
+    %h2.buy-confirmation__text
+      購入内容の確認
+    .buy-confirmation__item-box
+      .buy-confirmation__item-box__img
+        = image_tag '/test.jpg'
+      .buy-confirmation__item-box__info
+        %p.buy-confirmation__item-box__info__name
+          商品名
+        %p.buy-confirmation__item-box__info__price
+          %span.price
+            ¥12,000
+          %span.tax-and-delivery-fee
+            (税込)送料込み
+    .buy-confirmation__buy-content
+      .buy-confirmation__buy-content__inner-box
+        = form_tag "#" do
+          .price-box
+            .price-box__text
+              支払い金額
+            .price-box__price
+              ¥12,000
+          .user-info-box
+            .user-info-box__info
+              %ul.user-info-box__info__list
+                %li.user-info-box__info__list__bold
+                  支払い方法
+                %li.user-info-box__info__list__text
+                  クレジットカード
+                %li.user-info-box__info__list__text
+                  ************1804
+                %li.user-info-box__info__list__text
+                  有効期限 03/23
+              = link_to "変更する", "#", {class: "user-info-box__info__edit"}
+          .user-info-box
+            .user-info-box__info
+              %ul.user-info-box__info__list
+                %li.user-info-box__info__list__bold
+                  配送先
+                %li.user-info-box__info__list__text
+                  〒000-0000
+                %li.user-info-box__info__list__text
+                  大阪府 ○市○区 ***町1-1-101
+                %li.user-info-box__info__list__text
+                  田中 太郎
+              = link_to "変更する", "#", {class: "user-info-box__info__edit"}
+          .purchase-confirmation
+            %input{ type: 'submit', value: '購入する', class: 'purchase-confirmation__submit' }
+= render 'modules/sub_footer'
