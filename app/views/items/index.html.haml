@@ -114,3 +114,57 @@
           様々な支払いに対応
         %p.feature__items__item__detail
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+  .pickup
+    %h2.head
+      ピックアップカテゴリー
+    .pickup__box
+      .pickup__box__subtitle
+        = link_to "#" do
+          %h3.title
+      .pickup__box__lists
+        .list
+          = link_to "#" do
+            .list--img
+              = image_tag '/pict/a001.png'
+            .list__body
+              %h3.list__body--name
+              .list__body--details
+                %ul
+                  %li
+                    3000円
+                  %li
+                    = icon("fas", "star", class: "list__body--details--icon")
+                    0
+                %p
+                  (税込)
+        .list
+          = link_to "#" do
+            .list--img
+              = image_tag '/pict/a002.png'
+            .list__body
+              %h3.list__body--name
+              .list__body--details
+                %ul
+                  %li
+                    3000円
+                  %li
+                    = icon("fas", "star", class: "list__body--details--icon")
+                    0
+                %p
+                  (税込)
+        .list
+          = link_to "#" do
+            .list--img
+              = image_tag '/pict/a003.png'
+            .list__body
+              %h3.list__body--name
+              .list__body--details
+                %ul
+                  %li
+                    3000円
+                  %li
+                    = icon("fas", "star", class: "list__body--details--icon")
+                    0
+                %p
+                  (税込)
