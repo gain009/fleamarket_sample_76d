@@ -24,3 +24,8 @@ ActiveRecord::Schema.define(version: 2020_06_04_050153) do
   end
 
 end
+
+ActiveRecord::Schema.define(version: 0) do
+
+end
+
