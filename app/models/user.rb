@@ -13,4 +13,7 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :birth_day, presence: true
 
+  has_many :items
+  has_one :destination
+  has_one :card
 end
