@@ -1,4 +1,4 @@
-@mixin label{
+@mixin mark{
   margin-left: 8px;
   font-size: 12px;
   padding: 2px 4px;
@@ -26,10 +26,10 @@
       line-height: 1.4em;
     }
     .required{
-      @include label;
+      @include mark;
     }
     .any{
-      @include label;
+      @include mark;
       background-color: #afafaf;
     }
     input,select {
@@ -51,7 +51,7 @@
     }
     .content-image{
       height: 240px;
-      padding: 40px 40px;
+      padding: 40px;
       .content__image{
         &__message{
           margin: 20px;
@@ -68,7 +68,7 @@
     }
     .content-name{
       height: 380px;
-      padding: 40px 40px;  
+      padding: 40px;  
       textarea{
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -82,12 +82,12 @@
     }
     .content-detail {
       height: 500px;
-      padding: 40px 40px;
+      padding: 40px;
     }
     .content-info {
       position: relative;
       height: 500px;
-      padding: 40px 40px;
+      padding: 40px;
       .path,svg{
         fill: rgb(0, 195, 255);
         position: absolute;
