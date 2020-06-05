@@ -12,4 +12,7 @@ class Item < ApplicationRecord
   validates :brand_id, presence: true
   validates :user_id, presence: true
 
+  has_many :images
+  belongs_to :user
+  belongs_to :category
 end
