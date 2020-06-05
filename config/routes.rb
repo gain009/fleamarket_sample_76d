@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :user
 
-  resources :items, only: :show do
+  resources :items, only: [:new, :show] do
     get "buy/confirmation", to: 'items#buy_confirmation'
   end
   
