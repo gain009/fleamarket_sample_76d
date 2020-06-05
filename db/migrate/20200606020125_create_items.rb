@@ -13,7 +13,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :prefecture_id, null: false
       t.string :judgment
       t.integer :category_id, null: false
-      t.integer :brand_id, null: false
+      t.integer :brand_id
       t.integer :user_id, null: false
       t.timestamps
     end
