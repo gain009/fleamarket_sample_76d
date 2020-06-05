@@ -1,0 +1,29 @@
+.signUp
+  .header
+    .header__image
+      = image_tag "/logo/logo.png", size: "300x100"
+  .input
+    %form.input__group
+      .input__group__mailadress
+        メールアドレス
+      %input{type: "text", class: "input__group__box", placeholder: "メールアドレス"}
+
+    %form.input__group
+      .input__group__pasword
+        パスワード
+      %input{type: "text", class: "input__group__box", placeholder: "password"}
+      .input__group__content__btn
+        %button.input__group__btn
+          ログイン
+  .footer
+    %ul.footer__content
+      %li.footer__content__text
+        = link_to "プライバシーポリシー", "#", class: :footer__content__text__policy
+      %li.footer__content__text
+        = link_to "フリマ利用規約", "#", class: :footer__content__text__policy
+      %li.footer__content__text
+        = link_to "特定商法取引に関する規約", "#",  class: :footer__content__text__policy
+      .footer__image
+        = link_to image_tag "/logo/logo.png", size: "200x50"
+      
+    

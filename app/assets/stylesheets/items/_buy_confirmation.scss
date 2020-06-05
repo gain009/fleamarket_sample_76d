@@ -1,0 +1,109 @@
+.buy-main {
+  background-color: #f5f5f5;
+  color: #333;
+  .buy-confirmation {
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    &__text {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      padding: 32px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &__item-box {
+      text-align: center;
+      padding: 32px 180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #f5f5f5;
+      &__img img {
+        @include resize_img(80px, 80px);
+      }
+      &__info {
+        height: 80px;
+        margin-left: 16px;
+        font-size: 12px;
+        text-align: left;
+        &__name {
+          padding-bottom: 8px;
+          line-height: 1.5;
+        }
+        &__price {
+          padding-bottom: 8px;
+          line-height: 1.5;
+          font-weight: 600;
+        }
+      }
+    }
+    &__buy-content {
+      padding: 32px 16px;
+      &__inner-box {
+        margin: 0 auto;
+        max-width: 343px;
+        form {
+          display: block;
+          .price-box {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #f5f5f5;
+            padding: 20px 0 36px;
+            font-weight: 600;
+            &__text {
+              font-size: 18px;
+            }
+            &__price {
+              font-size: 22px;
+            }
+          }
+          .user-info-box {
+            padding: 32px 0;
+            border-bottom: 1px solid #f5f5f5;
+            &__info {
+              display: flex;
+              justify-content: space-between;
+              font-size: 14px;
+              &__list {
+                list-style: none;
+                &__bold {
+                  font-weight: bold;
+                  margin-bottom: 8px;
+                }
+                &__text {
+                  line-height: 1.5;
+                }
+              }
+              &__edit {
+                display: block;
+                height: 22px;
+                text-decoration: none;
+                color: #3CCACE;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+          .purchase-confirmation {
+            padding-top: 34px;
+            &__submit {
+              display: block;
+              background-color: #3CCACE;
+              color: #fff;
+              border: none;
+              width: 343px;
+              line-height: 48px;
+              font-size: 14px;
+              font-weight: 600;
+              &:hover {
+                background-color: #27BABE;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

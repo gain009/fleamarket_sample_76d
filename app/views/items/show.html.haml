@@ -1,0 +1,80 @@
+%main.show-main
+  .center-wrapper
+    .item-container
+      %h1.item-name
+        商品名
+      .item-container__info
+        .item-container__info__image
+          .image-show
+            = image_tag "/test.jpg", alt: "画像"
+          .image-list
+            .image-list__item
+              = image_tag "/test.jpg", alt: "画像"
+            .image-list__item
+              = image_tag "/test.jpg", alt: "画像"
+            .image-list__item
+              = image_tag "/test.jpg", alt: "画像"
+            .image-list__item
+              = image_tag "/test.jpg", alt: "画像"
+            .image-list__item
+              = image_tag "/test.jpg", alt: "画像"
+            .image-list__item
+              = image_tag "/test.jpg", alt: "画像"
+        %table.item-container__info__detail
+          %tbody
+            %tr
+              %th
+                出品者
+              %td
+                = link_to "user", "#"
+            %tr
+              %th
+                カテゴリー
+              %td
+                = link_to "メンズ", "#"
+                = link_to "> 靴", "#"
+                = link_to "> スニーカー", "#"
+            %tr
+              %th
+                商品の状態
+              %td
+                新品
+            %tr
+              %th
+                発送料の負担
+              %td
+                送料込み（出品者負担）
+            %tr
+              %th
+                発送元地域
+              %td
+                大阪
+            %tr
+              %th
+                発送までの日数
+              %td
+                1~2日で発送
+      .item-container__price-box
+        %span.item-container__price-box__price
+          ¥12,000
+        %span.item-container__price-box__tax
+          (税込)
+        %span.item-container__price-box__delivery-fee
+          送料込み
+      = link_to "購入画面に進む", item_buy_confirmation_path(item_id: ":item_id"), {class: "item-container__buy-btn"}
+      .item-container__explanation
+        商品の説明
+    .related-items
+      %section
+        %h2
+          userのその他の商品
+        .items
+          = render 'related_item'
+          = render 'related_item'
+      %section
+        %h2
+          同じカテゴリーの商品
+        .items
+          = render 'related_item'
+          = render 'related_item'
+          = render 'related_item'
