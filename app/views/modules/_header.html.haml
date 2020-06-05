@@ -1,0 +1,25 @@
+%header.header
+  .headerinner
+    .headermain
+      .headermain__logo
+        = link_to "#" do
+          = image_tag '/logo/logo.png', class: "headermain__logo--img"
+
+      .headermain__search
+        = form_tag("#", method: 'get') do
+          = text_field_tag :search, '', placeholder: "キーワードから探す", class: "search__input"
+          %button{type: "submit"}
+            .search__submit
+              = image_tag '/icon/icon-search 1.png', class: "search__submit__btn"
+
+    %nav.lists
+      %ul.lists__left
+        %li.lists__left__item.lists__left__item--first
+          = link_to "カテゴリー", "#"
+        %li.lists__left__item
+          = link_to "ブランド", "#"
+      %ul.lists__right
+        %li.lists__right__item.lists__right__item--login
+          = link_to "ログイン", new_user_session_path, class: 'items'
+        %li.lists__right__item.lists__right__item--new
+          = link_to "新規会員登録", new_user_registration_path, class: 'items'
