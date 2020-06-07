@@ -1,11 +1,13 @@
+= render 'modules/header'
+
 %body
   .container
     .container-main
-      = image_tag "出品する.png", alt: "camera icon", class: "container-main__image", width: "120px"
       .container-main__informations
         .container-main__informations__image
           .container-main__informations__image__photo
-            %i.fas.fa-smile.fa-7x
+            = link_to "#" do
+              %i.fas.fa-smile.fa-7x
           .container-main__informations__image__list
             %ul 
               %li 出品数
@@ -17,64 +19,15 @@
             %p 出品リスト
           .container-main__informations__tab__detail-right
             %p 購入リスト
-    .container__side-bar
-      .container__side-bar__information
-        .container__side-bar__information__detail__title
-          %p マイページ
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 出品する
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 出品した商品−出品中
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 出品した商品−取引中
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 出品した商品−売却済
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 購入した商品−取引中
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 購入した商品−過去の取引
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 購入した商品−売却済
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p 評価一覧
-          %i.fas.fa-chevron-right
-        .container__side-bar__information__detail
-          %p お問い合わせ
-          %i.fas.fa-chevron-right
-      .container__side-bar__paymemt
-        .container__side-bar__paymemt__title
-          %p FURIペイ
-        .container__side-bar__paymemt__detail
-          %p 売り上げ・振り込み申請
-          %i.fas.fa-chevron-right
-        .container__side-bar__paymemt__detail
-          %p ポイント
-          %i.fas.fa-chevron-right
-      .container__side-bar__configuration
-        .container__side-bar__configuration__title
-          %p 設定
-        .container__side-bar__configuration__detail
-          %p プロフィール
-          %i.fas.fa-chevron-right
-        .container__side-bar__configuration__detail
-          %p 発送元・お届け先住所変更
-          %i.fas.fa-chevron-right
-        .container__side-bar__configuration__detail
-          %p お支払い方法
-          %i.fas.fa-chevron-right
-        .container__side-bar__configuration__detail
-          %p 本人情報確認・変更
-          %i.fas.fa-chevron-right
-        .container__side-bar__configuration__detail
-          %p ログアウト
-          %i.fas.fa-chevron-right
+    
+    = render 'side-bar'
+
+= render 'modules/footer'
+
+= link_to "#" do
+  .exhibition-btn
+    %span.exhibition-btn__text
+      出品する
+    = image_tag('/icon/icon_camera.png', class: "exhibition-btn__icon")
 
 

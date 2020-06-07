@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
 
   get 'mypage/index', to: 'mypage#index'
-  
+  get 'logout/index', to: 'logout#index'
+
 end
