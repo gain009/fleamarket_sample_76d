@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :user
-
-  resources :items, only: [:index, :show] do
+  resources :items, only: [:index, :new, :show] do
     get "buy/confirmation", to: 'items#buy_confirmation'
   end
   

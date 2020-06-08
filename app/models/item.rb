@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   validates :shipping_date, presence: true
   validates :prefecture_id, presence: true
   validates :category_id, presence: true
-  validates :brand_id, presence: true
   validates :user_id, presence: true
 
   has_many :images
