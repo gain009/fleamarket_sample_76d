@@ -1,7 +1,7 @@
 # README
 
 ## ER図
-<img width="492" alt="d1511c1d978ee87780e9ca1cf7fa3718" src="https://user-images.githubusercontent.com/64832157/83739212-4321a000-a690-11ea-8608-e78ab98acc42.png">
+<img width="479" alt="de297f3d6d527442a00903dc81df4454" src="https://user-images.githubusercontent.com/64832157/83985356-e1a15000-a973-11ea-8e15-474c975ecdef.png">
 
 ## usersテーブル
 |Column|Type|Options|
@@ -56,11 +56,10 @@
 |description|string|null: false|
 |status|string|null: false|
 |size|string|null: false|
-|shipping_area|string|null: false|
-|shipping_method|string|null: false|
-|shipping_date|string|null: false|
-|prefecture_id|string|null: false|
-|judgment|string||
+|shipping_cost|integer|null: false|
+|shipping_method|integer|null: false|
+|shipping_date|sinteger|null: false|
+|prefecture_id|integer|null: false|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
