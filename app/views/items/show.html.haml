@@ -51,8 +51,14 @@
         %span.item-container__price-box__tax
           (税込)
         %span.item-container__price-box__delivery-fee
-          送料込み
-      = link_to "購入画面に進む", item_buy_confirmation_path(item_id: ":item_id"), {class: "item-container__buy-btn"}
+          = @item.shipping_cost.gsub(/送料込み.+/, "送料込み").gsub(/着払い.+/, "着払い")
+      - if current_user.id == @item.user_id
+        = link_to "商品の編集", "#", {class: "item-container__edit-btn"}
+        %p
+        = link_to "この商品を削除する", "#", {class: "item-container__delete-btn"}
+      - else
+        = link_to "購入画面に進む", item_buy_confirmation_path(item_id: @item.id), {class: "item-container__buy-btn"}
+        
       .item-container__explanation
         商品の説明
     .related-items
