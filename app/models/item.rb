@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  
   validates :name, presence: true
   validates :price, presence: true
   validates :description, presence: true
