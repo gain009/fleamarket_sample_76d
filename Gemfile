@@ -77,4 +77,6 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem 'jquery-rails'
 gem 'pry-rails'
-
+gem 'payjp'
+gem 'dotenv-rails'
+gem 'active_hash'
