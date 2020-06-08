@@ -66,8 +66,7 @@
         %h2
           = "#{@item.user.nickname}さんのその他の商品"
         .items
-          = render 'related_item'
-          = render 'related_item'
+          = render partial: 'related_item', collection: @same_user_items, as: "item"
       %section
         %h2
           同じカテゴリーの商品
