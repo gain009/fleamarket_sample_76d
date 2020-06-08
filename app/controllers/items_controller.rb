@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
+
   def index
   end
 
