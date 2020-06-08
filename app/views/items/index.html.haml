@@ -100,14 +100,14 @@
           .list
             = link_to "#" do
               .list--img
-                = image_tag '/pict/a001.png'
+                = image_tag item.images.first.image.url
               .list__body
                 %h3.list__body--name
-                  商品名
+                  = item.name
                 .list__body--details
                   %ul
                     %li
-                      3000円
+                      = "#{item.price}円"
                     %li
                       = icon("fas", "star", class: "list__body--details--icon")
                       0
