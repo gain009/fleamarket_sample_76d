@@ -9,18 +9,9 @@
           .image-show
             = image_tag "#{@item.images[0].image}", alt: "画像"
           .image-list
-            .image-list__item
-              = image_tag "/test.jpg", alt: "画像"
-            .image-list__item
-              = image_tag "/test.jpg", alt: "画像"
-            .image-list__item
-              = image_tag "/test.jpg", alt: "画像"
-            .image-list__item
-              = image_tag "/test.jpg", alt: "画像"
-            .image-list__item
-              = image_tag "/test.jpg", alt: "画像"
-            .image-list__item
-              = image_tag "/test.jpg", alt: "画像"
+            - @item.images.each_with_index do |image, i|
+              .image-list__item
+                = image_tag "#{image.image}", alt: "画像", class: "image-index-#{i}"
         %table.item-container__info__detail
           %tbody
             %tr
