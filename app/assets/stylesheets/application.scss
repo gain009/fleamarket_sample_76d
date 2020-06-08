@@ -1,7 +1,6 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
 @import "./items.scss";
 @import "users/sign_in";
 @import "users/sign_up";
@@ -11,3 +10,7 @@
 @import "modules/sub_header";
 @import "modules/sub.footer";
 @import "items/buy_confirmation";
+@import "mypage/mypage";
+@import "mypage/logout";
+
+@import "items/new";
