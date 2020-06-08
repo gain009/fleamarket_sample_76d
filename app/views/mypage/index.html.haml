@@ -1,0 +1,33 @@
+= render 'modules/header'
+
+%body
+  .container
+    .container-main
+      .container-main__informations
+        .container-main__informations__image
+          .container-main__informations__image__photo
+            = link_to "#" do
+              %i.fas.fa-smile.fa-7x
+          .container-main__informations__image__list
+            %ul 
+              %li 出品数
+              %li 0
+              %li.container-main__informations__image__list__detail 購入数
+              %li 0
+        .container-main__informations__tab
+          .container-main__informations__tab__detail-left
+            %p 出品リスト
+          .container-main__informations__tab__detail-right
+            %p 購入リスト
+    
+    = render 'side-bar'
+
+= render 'modules/footer'
+
+= link_to "#" do
+  .exhibition-btn
+    %span.exhibition-btn__text
+      出品する
+    = image_tag('/icon/icon_camera.png', class: "exhibition-btn__icon")
+
+
