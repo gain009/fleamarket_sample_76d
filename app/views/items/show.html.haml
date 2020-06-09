@@ -63,7 +63,7 @@
           (税込)
         %span.item-container__price-box__delivery-fee
           = @item.shipping_cost.sub_cost
-      - if current_user.id == @item.user_id
+      - if current_user != nil && current_user.id == @item.user_id
         = link_to "商品の編集", "#", {class: "item-container__edit-btn"}
         %p
         = link_to "この商品を削除する", "#", {class: "item-container__delete-btn"}
