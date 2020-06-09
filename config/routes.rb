@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :user
   resources :items, only: [:index, :new, :show] do
     get "buy/confirmation", to: 'items#buy_confirmation'
+    resources :likes, only: [:create, :destroy]
   end
 
   get 'mypage/index', to: 'mypage#index'
