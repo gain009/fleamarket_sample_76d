@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
       labelWidth = (620 - parseInt($(imagePrev).css('width')));
       $('.label-content').css('width', labelWidth);
       //id・forの値を変更
-      a = $('.lebel-box').attr({for: `item_images_attributes_${count}_src`});
+      a = $('.lebel-box').attr({for: `item_images_attributes_${count}_image`});
     }
   }
 
@@ -74,7 +74,7 @@ $(document).on('turbolinks:load', function(){
     //画像を消去
     $(this).parent().parent().parent().remove();
     //フォームの中身を削除
-    $(`#item_images_attributes_${id}_src`).val("");
+    $(`#item_images_attributes_${id}_image`).val("");
     //プレビューの数を取得
     let count = $('.preview-box').length;
     //countに応じてラベルのwidth・id・forの値を変更

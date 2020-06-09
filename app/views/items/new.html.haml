@@ -2,7 +2,7 @@
 .exhibition
   = render 'modules/sub_header'
   .contents
-    = form_for "#" do |f|
+    = form_for @item do |f|
       .content-image.border
         .content__image
           %label 出品画像
@@ -12,54 +12,54 @@
           .content__image__box
             .prev-content
             .label-content
-              %label{for: "item_images_attributes_0_src",class: "lebel-box"}
+              %label{for: "item_images_attributes_0_image",class: "lebel-box"}
                 .content__image__select
                   %pre.content__image__icon
                     = icon('fas', 'camera')                
                     クリックしてファイルを選択
-                = f.fields_for "#" ,multiple: true do |i|
-                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_0_src"
-                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_1_src", name: "item[images_attributes][1][src]"
-                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_2_src", name: "item[images_attributes][2][src]"
-                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_3_src", name: "item[images_attributes][3][src]"
-                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_4_src", name: "item[images_attributes][4][src]"
+                = f.fields_for :images ,multiple: true do |i|
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_0_image"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_1_image", name: "item[images_attributes][1][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_2_image", name: "item[images_attributes][2][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_3_image", name: "item[images_attributes][3][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_4_image", name: "item[images_attributes][4][image]"
               
       .content-name.border
         .content__name
           %label 商品名
           %span.required 必須
         .content__input
-          = f.text_field "#", class: "sale-info", placeholder: "40文字まで", type: "text", maxlength: "40", required: ""
+          = f.text_field :name, class: "sale-info", placeholder: "40文字まで", type: "text", maxlength: "40", required: ""
         
         
         .content__explanation
           %label 商品の説明
           %span.required 必須
         .content__textarea
-          = f.text_area "#",  rows: "7", maxlength: "1000", required: "", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :description,  rows: "7", maxlength: "1000", required: "", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
       .content-detail.border
         .content__category
           %p 商品の詳細
           %label カテゴリー
           %span.required 必須
-          = f.select "#", ["選択してください", "レディース", "メンズ", "ベビー・キッズ", "インテリア・住まい・小物", "本・音楽・ゲーム", "おもちゃ・ホビー・グッズ", "コスメ・香水・美容", "家電・スマホ・カメラ","スポーツ・レジャー","スポーツ・レジャー", "ハンドメイド", "チケット", "自動車・オートバイ", "その他"]
+          = f.collection_select :category_id, CategoryId.all, :id, :name
 
 
 
           %label サイズ
           %span.required 必須
-          = f.select "#", ["選択してください","XXS以下", "XS(SS)", "S", "M", "L", "XL(LL)", "2XL(3L)", "3XL(4L)以上","4XL(5L)以上","23.5cm以下","24cm","24.5cm","25cm","25.5cm","26cm以上","60cm","70cm","80cm","90cm","100cm","110cm","120cm","130cm","140cm","150cm","160cm","FREE SIZE"]
+          = f.collection_select :size_id, Size.all, :id, :name
 
         .content__brand
           %label ブランド
           %span.any 任意
-          = f.text_field "#", placeholder: "例）シャネル", type: "text", maxlength: "40", required: ""
+          = f.text_field :brand_id, placeholder: "例）シャネル", type: "text", maxlength: "40", required: ""
 
         .content__status
           %label 商品の状態
           %span.required 必須
-          = f.select "#", ["選択してください", "新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "やや傷や汚れあり", "傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"]
+          = f.collection_select :status_id, Status.all, :id, :name
 
 
       .content-info.border
@@ -108,7 +108,7 @@
             %span.required 必須
             %span.yen ¥
           .content__selling-price__from            
-            = f.number_field "#",  placeholder: "0", type: "number", min: "500", max: "9999999",style: "text-align:right;"            
+            = f.number_field :price,  placeholder: "0", type: "number", min: "500", max: "9999999",style: "text-align:right;"            
         .fee-form
           .name 販売手数料(10%)
           %span.value ー
