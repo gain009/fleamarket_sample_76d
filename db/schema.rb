@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_020148) do
+ActiveRecord::Schema.define(version: 2020_06_08_141139) do
 
   create_table "brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -65,16 +65,15 @@ ActiveRecord::Schema.define(version: 2020_06_06_020148) do
     t.string "description", null: false
     t.string "status", null: false
     t.string "size", null: false
-    t.string "shipping_area", null: false
-    t.string "shipping_method", null: false
-    t.string "shipping_date", null: false
-    t.string "prefecture_id", null: false
-    t.string "judgment"
+    t.integer "prefecture_id", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shipping_method_id"
+    t.integer "shipping_cost_id"
+    t.integer "shipping_date_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
