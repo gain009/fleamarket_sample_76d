@@ -98,7 +98,7 @@
       .pickup__box__lists
         - @items.each do |item|
           .list
-            = link_to "/items/#{item.id}", method: :get do
+            = link_to item_path(item.id) do
               .list--img
                 = image_tag item.images[0].image
                   - if item.buyer_id.present?
@@ -128,7 +128,7 @@
       .pickup__box__lists
         -  @item_brands.each do |item|
           .list
-            = link_to "/items/#{item.id}", method: :get do
+            = link_to item_path(item.id) do
               .list--img
                 = image_tag item.images[0].image
                   - if item.buyer_id.present?
