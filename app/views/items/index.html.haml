@@ -101,8 +101,7 @@
             = link_to "/items/#{item.id}", method: :get do
               .list--img
                 = image_tag item.images[0].image
-                  -# sizeは仮
-                  - if item.size == ""
+                  - if item.buyer_id.present?
                   .list--img__sold
                     .list--img__sold__inner SOLD
               .list__body
@@ -132,7 +131,7 @@
             = link_to "/items/#{item.id}", method: :get do
               .list--img
                 = image_tag item.images[0].image
-                  - if item.size == ""
+                  - if item.buyer_id.present?
                   .list--img__sold
                     .list--img__sold__inner SOLD
               .list__body
