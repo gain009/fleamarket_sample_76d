@@ -2,7 +2,7 @@
   .sign-header
     .sign-header__content
       .sign-header__content__image
-        = image_tag "/logo/logo.png", size: "185x45"
+        = link_to (image_tag "/logo/logo.png", size: "185x45"), root_path
       %nav.sign-header__content__progress
         %ol
           %li.sign-header__content__progress__text__active{ id: "first" }
