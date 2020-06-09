@@ -1,29 +1,23 @@
-.signUp
-  .header
-    .header__image
-      = image_tag "/logo/logo.png", size: "300x100"
-  .input
-    %form.input__group
-      .input__group__mailadress
-        メールアドレス
-      %input{type: "text", class: "input__group__box", placeholder: "メールアドレス"}
+.signIn
+  .header2
+    .header2__image
+      = image_tag "/logo/logo.png", size: "185x49"
+  .input2
+    %h2.input2__name
+      会員情報入力
+    .input2__group
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+        .input2__group__content1
+          = f.label "メールアドレス", class:"input2__group__content1__mailadress"
+          %br
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input2__group__content1__box", placeholder: "メールアドレス"
+        %br
+        .input2__group__content2
+          = f.label "パスワード", class:"input2__group__content2__password"
+          %br
+          = f.password_field :password, autocomplete: "current-password", class: "input2__group__content2__box", placeholder: "password"
 
-    %form.input__group
-      .input__group__pasword
-        パスワード
-      %input{type: "text", class: "input__group__box", placeholder: "password"}
-      .input__group__content__btn
-        %button.input__group__btn
-          ログイン
-  .footer
-    %ul.footer__content
-      %li.footer__content__text
-        = link_to "プライバシーポリシー", "#", class: :footer__content__text__policy
-      %li.footer__content__text
-        = link_to "フリマ利用規約", "#", class: :footer__content__text__policy
-      %li.footer__content__text
-        = link_to "特定商法取引に関する規約", "#",  class: :footer__content__text__policy
-      .footer__image
-        = link_to image_tag "/logo/logo.png", size: "200x50"
-      
-    
+        .input__group__content__btn
+          = f.submit "ログイン", class:"input2__group__btn"
+          
+  = render 'modules/sign_footer'

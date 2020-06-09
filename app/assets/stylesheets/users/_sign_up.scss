@@ -3,17 +3,33 @@
   text-align: center;
   font-size:15px;
   font-weight: 600;
+  margin-right: 20px;
 }
 
 @mixin registerbox { 
   height: 20px;
-  width: 100%;
+  width: 321px;
   padding: 10px 10px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
   background: #fff;
   line-height: 1.5;
   font-size: 16px;
+  margin-top: 8px;
+}
+
+@mixin registerbox_name {
+  width: calc(50% - 41px);
+  margin-top: 8px;
+  height: 20px;
+
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  outline: none;
 }
 
 @mixin symbol {
@@ -49,46 +65,56 @@
 
 
 
-.signIn {
+.signUp {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   background-color: #f5f5f5;
-  .header {
-    height: 100px;
+  .sign-header {
+    height: 128px;
     width: 100%;
-    display: flex;
-    &__image {
-      width: 300px;
-      height: 100px;
-      margin-left: calc(100% - 75%);
+    &__content {
+      width: 50%;
+      height: 128px;
+      display: flex;
+      margin: 0 auto;
+      &__image {
+        width: 185px;
+        height: 45px;
+        margin:40px 0 0 60px
+      }
+      &__progress {
+        height: 50px;
+        padding: 30px 0 0 0px;
+        border: 0;
+        margin-left: 100px;
+        ol {
+          width: 100%;
+        }
+        &__text__active {
+          color: red;
+          font-weight: 600;
+          @include progress
+
+        }
+        &__text__passive {
+          color: #ccc;
+          @include progress
+        }
+        &__round__passive {
+          @include symbol
+          
+        }
+        &__round__active {
+          @include symbol-red
+        }
+        &__text {
+          color: #ccc;
+          @include progress
+          
+        }
+      }
     }
-    &__progress {
-      height: 50px;
-      padding: 30px 0 0 44px;
-      border: 0;
-      &__text__active {
-        color: red;
-        font-weight: 600;
-        @include progress
-      }
-      &__text__passive {
-        color: #ccc;
-        font-weight: 600;
-        @include progress
-      }
-      &__round__passive {
-        @include symbol
-        
-      }
-      &__round__active {
-        @include symbol-red
-      }
-      &__text {
-        color: #ccc;
-        @include progress
-        
-      }
-    }
+    
   }
 
 
@@ -102,10 +128,15 @@
     margin: 0 auto;
     background-color: white;
     &__name {
-      font-size: 30px;
+      font-size: 22px;
       text-align: center;
+      border-bottom: 1px solid #f5f5f5;
+      padding: 33px;
+      font-weight: bold;
     }
     &__group {
+      height: 100%;
+      width: 100%;
       padding: 50px;
       max-width: 343px;
       margin: 0 auto;
@@ -113,9 +144,14 @@
         margin-top: 30px;
         &__label {
           font-weight: bold;
+          font-size: 13px;
         }
         &__required {
           background-color: red;
+          @include required-or-any
+        }
+        &__check {
+          background-color: #ccc;
           @include required-or-any
         }
         &__box {
@@ -128,19 +164,12 @@
           @include required-or-any
         }
         
-        &__name {
-          margin-right: 7px;
-          margin-top: 8px;
-          height: 20px;
-          width: 110px;
-
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
-          line-height: 1.5;
-          font-size: 16px;
-          outline: none;
+        &__name-left {
+          margin-right: 6px;
+          @include registerbox_name
+        }
+        &__name-rigth {
+          @include registerbox_name
         }
         &__btn {
           &__tag{
@@ -151,34 +180,6 @@
             @include btn
           }
         }
-      }
-    }
-    
-  }
-
-
-
-
-  .footer {
-    height: 190px;
-    width: 100%;
-    background-color: #f5f5f5;
-    padding: 40px 0;
-    text-align: center;
-    &__content {
-      width: 456px;
-      margin: 0 auto;
-      &__text {
-        a {
-          text-decoration: none;
-          color: black;
-          font-size: 12px;
-        }
-      }
-      &__image {
-        width: 200px;
-        height: 65px;
-        margin: 40px auto 0;
       }
     }
   }
