@@ -80,18 +80,13 @@
         }
       }
       &__buy-btn {
-        display: block;
-        margin-top: 16px;
-        background-color: #3CCACE;
-        color: #fff;
-        text-decoration: none;
-        font-size: 24px;
-        line-height: 60px;
-        text-align: center;
-        font-weight: 600;
-        &:hover {
-          background-color: #27BABE;
-        }
+        @include link-btn();
+      }
+      &__edit-btn {
+        @include link-btn(18px);
+      }
+      &__delete-btn {
+        @include link-btn(18px, darkgray, gray);
       }
       &__explanation {
         padding-top: 32px;
