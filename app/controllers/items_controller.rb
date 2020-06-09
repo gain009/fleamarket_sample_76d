@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
 
   def index
+    @items = Item.includes(:images).order('created_at DESC').limit(3)
+    @item_brands = Item.includes(:images).order('brand_id DESC').limit(3)
   end
 
   def new

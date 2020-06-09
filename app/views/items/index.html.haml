@@ -96,51 +96,26 @@
           %h3.title
             新規投稿商品
       .pickup__box__lists
-        .list
-          = link_to "#" do
-            .list--img
-              = image_tag '/pict/a001.png'
-            .list__body
-              %h3.list__body--name
-              .list__body--details
-                %ul
-                  %li
-                    3000円
-                  %li
-                    = icon("fas", "star", class: "list__body--details--icon")
-                    0
-                %p
-                  (税込)
-        .list
-          = link_to "#" do
-            .list--img
-              = image_tag '/pict/a004.png'
-            .list__body
-              %h3.list__body--name
-              .list__body--details
-                %ul
-                  %li
-                    2000円
-                  %li
-                    = icon("fas", "star", class: "list__body--details--icon")
-                    0
-                %p
-                  (税込)
-        .list
-          = link_to "#" do
-            .list--img
-              = image_tag '/pict/a007.png'
-            .list__body
-              %h3.list__body--name
-              .list__body--details
-                %ul
-                  %li
-                    1000円
-                  %li
-                    = icon("fas", "star", class: "list__body--details--icon")
-                    0
-                %p
-                  (税込)
+        - @items.each do |item|
+          .list
+            = link_to item_path(item.id) do
+              .list--img
+                = image_tag item.images[0].image
+                  - if item.buyer_id.present?
+                  .list--img__sold
+                    .list--img__sold__inner SOLD
+              .list__body
+                %h3.list__body--name
+                  = item.name
+                .list__body--details
+                  %ul
+                    %li
+                      = "#{item.price}円"
+                    %li
+                      = icon("fas", "star", class: "list__body--details--icon")
+                      0
+                  %p
+                    (税込)
 
   .pickup
     %h2.pickup__head
@@ -151,51 +126,27 @@
           %h3.title
             新規投稿商品
       .pickup__box__lists
-        .list
-          = link_to "#" do
-            .list--img
-              = image_tag '/pict/a001.png'
-            .list__body
-              %h3.list__body--name
-              .list__body--details
-                %ul
-                  %li
-                    3000円
-                  %li
-                    = icon("fas", "star", class: "list__body--details--icon")
-                    0
-                %p
-                  (税込)
-        .list
-          = link_to "#" do
-            .list--img
-              = image_tag '/pict/a004.png'
-            .list__body
-              %h3.list__body--name
-              .list__body--details
-                %ul
-                  %li
-                    2000円
-                  %li
-                    = icon("fas", "star", class: "list__body--details--icon")
-                    0
-                %p
-                  (税込)
-        .list
-          = link_to "#" do
-            .list--img
-              = image_tag '/pict/a007.png'
-            .list__body
-              %h3.list__body--name
-              .list__body--details
-                %ul
-                  %li
-                    1000円
-                  %li
-                    = icon("fas", "star", class: "list__body--details--icon")
-                    0
-                %p
-                  (税込)
+        -  @item_brands.each do |item|
+          .list
+            = link_to item_path(item.id) do
+              .list--img
+                = image_tag item.images[0].image
+                  - if item.buyer_id.present?
+                  .list--img__sold
+                    .list--img__sold__inner SOLD
+              .list__body
+                %h3.list__body--name
+                  = item.name
+                .list__body--details
+                  %ul
+                    %li
+                      = "#{item.price}円"
+                    %li
+                      = icon("fas", "star", class: "list__body--details--icon")
+                      0
+                  %p
+                    (税込)
+        
 
 %aside.app-bottom
   .app-bottom__inner
@@ -209,7 +160,7 @@
 
 = render 'modules/footer'
 
-= link_to "#" do
+= link_to new_item_path do
   .exhibition-btn
     %span.exhibition-btn__text
       出品する

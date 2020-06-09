@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   get 'card/show'
   devise_for :users
   root 'items#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :user
-
-  resources :items, only: [:new, :show] do
+  resources :items, only: [:index, :new, :show] do
     get "buy/confirmation", to: 'items#buy_confirmation'
   end
 
