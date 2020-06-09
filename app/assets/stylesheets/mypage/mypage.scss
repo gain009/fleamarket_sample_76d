@@ -1,0 +1,229 @@
+
+@mixin side__bar {
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  background-color: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  position: relative;
+  padding-left: 12px;
+}
+
+@mixin side__bar__detail {
+  position: absolute;
+  top: 34%;
+  right: 7%;
+}
+
+$grey:#f1f1f1;
+$blue:#3ccace;
+$light_grey: #FFFAFA;
+
+body {
+  height: 1250px;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: $grey;
+  &-main {
+    width: 60%;
+    height: 100%;
+    background-color: $grey;
+    position: absolute;
+    right: 4%;
+    &__image{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+    }
+    &__informations {
+      width: 100%;
+      margin-top: 40px;
+      position: relative;
+      &__image {
+        height: 300px;
+        background-color: powderblue;
+        &__photo {
+          height: 200px;
+          width: 100%;
+          position: relative;
+        }
+        &__photo i {
+          position: absolute;
+          top: 60px;
+          right: 44%;
+          color: rgb(192, 188, 188);
+        }
+        &__list {
+          height: 100px;
+        }
+        &__list ul {
+          text-align: center;
+        }
+        &__list li {
+          display: inline;
+          font-size: 20px;
+          margin-left: 15px;
+        }
+      }
+      &__tab {
+        height: 100px;
+        position: relative;
+        &__detail-left {
+          height: 100%;
+          width: 50%;
+          background-color: $blue;
+          position: absolute;
+        }
+        &__detail-left:hover {
+          background-color:#AFEEEE;
+        }
+        &__detail-left p {
+          font-size: 20px;
+          font-weight: bold;
+          color: white;
+          position: relative;
+          top: 30%;
+          left: 40%;
+        }
+        &__detail-right {
+          position: absolute;
+          height: 100%;
+          width: 50%;
+          background-color: white;
+          right: 0px;
+        }
+        &__detail-right:hover {
+          background-color: rgb(241, 236, 236);
+        }
+        &__detail-right p {
+          font-size: 20px;
+          font-weight: bold;
+          color: $blue;
+          position: relative;
+          top: 30%;
+          left: 40%;
+        }
+      }
+    }
+  }
+
+  &__side-bar {
+    box-sizing: content-box;
+    width: 30%;
+    height: 100%;
+    background-color: $grey;
+    position: absolute;
+    left: 4%;
+    &__information {
+      margin-top: 40px;
+      &__detail {
+        color: black;
+        @include side__bar;
+        &__title {
+          @include side__bar;
+          background-color: $blue;
+        }
+        &__title:hover {
+          background-color: #B5F3E1;
+        }
+        &__title p {
+          position: absolute;
+          color: white;
+          font-weight: bold;
+          top: 30%;
+        }
+        &__title i {
+          @include side__bar__detail;
+          color: #a4a2a2;
+        }  
+      }
+      &__detail:hover {
+        color: $blue;
+        background-color: $light_grey;
+      }
+      &__detail p {
+        position: absolute;
+        top: 30%;
+      }
+      &__detail i {
+        @include side__bar__detail;
+        color: #a4a2a2;
+      }
+    }
+
+    &__paymemt {
+      margin-top: 30px;
+      &__title {
+        height: 55px;
+        background-color: $grey;
+        position: relative;
+      }
+      &__title p {
+        position: absolute;
+        top: 40%;
+        padding-left: 12px;
+        color: $blue;
+        font-weight: bold;
+      }
+      &__detail:hover {
+        color: $blue;
+        background-color: $light_grey;
+      }
+      &__detail {
+        color: black;
+        @include side__bar;
+      }
+      &__detail p {
+        position: absolute;
+        top: 30%;
+      }
+      &__detail i {
+        @include side__bar__detail;
+        color: #a4a2a2;
+      }
+    }
+    &__configuration {
+      margin-top: 30px;
+      &__title{
+        height: 55px;
+        background-color: $grey;
+        position: relative;
+      }
+      &__title p {
+        position: absolute;
+        top: 34%;
+        padding-left: 12px;
+        color: $blue;
+        font-weight: bold;
+      }
+      &__detail {
+        color: black;
+        @include side__bar;
+      }
+      &__detail:hover {
+        color: $blue;
+        background-color: $light_grey;
+      }
+      &__detail p {
+        position: absolute;
+        top: 30%;
+      }
+      &__detail i {
+        @include side__bar__detail;
+        color: #a4a2a2;
+      }
+    }
+  }
+}
+
+
+
+
+
+
