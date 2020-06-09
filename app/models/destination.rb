@@ -1,7 +1,7 @@
 class Destination < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-  
+
   validates :destination_family_name, presence: true
   validates :destination_first_name, presence: true
   validates :destination_family_name_kana, presence: true
