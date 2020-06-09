@@ -1,0 +1,10 @@
+- if user_signed_in?
+  - if item.like_user(current_user)
+    = link_to item_likes_path(item.id), method: :delete, remote: true do
+      = icon("fas", "star", class: "list__body--details--icon")
+  - else
+    = link_to item_likes_path(item.id), method: :post, remote: true do
+      = icon("fas", "star", class: "list__body--details--icon")
+- else
+  = icon("fas", "star", class: "list__body--details--icon")
+  = item.likes.count

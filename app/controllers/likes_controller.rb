@@ -4,13 +4,11 @@ class LikesController < ApplicationController
 
   def create
     @like = current_user.likes.create(item_id: params[:item_id])
-    @items = Item.all
   end
 
   def destroy
-    like = current_user.likes.find_by(item_id: params[:item_id])
+    like = current_user.likes.find_by(item_id: params[:item_id], user_id: current_user.id)
     like.destroy
-    @items = Item.all
   end
 
   private

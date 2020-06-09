@@ -111,9 +111,8 @@
                   %ul
                     %li
                       = "#{item.price}円"
-                    %li
-                      = icon("fas", "star", class: "list__body--details--icon")
-                      0
+                    %li#likes_btn
+                      = render partial: 'likes/like', locals: { item: item}
                   %p
                     (税込)
 
