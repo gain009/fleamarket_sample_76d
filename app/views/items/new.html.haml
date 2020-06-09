@@ -8,13 +8,22 @@
           %label 出品画像
           %span.required 必須
           .content__image__message
-          最大10枚までアップロードできます
+          最大5枚までアップロードできます
           .content__image__box
-            %label{class: "input-box__image"}
-              = icon('fas', 'camera')
-              .content__image__select
-                クリックしてファイルを選択
-              = f.file_field "#", type: 'file', name: "#", style: "display:none"
+            .prev-content
+            .label-content
+              %label{for: "item_images_attributes_0_src",class: "lebel-box"}
+                .content__image__select
+                  %pre.content__image__icon
+                    = icon('fas', 'camera')                
+                    クリックしてファイルを選択
+                = f.fields_for "#" ,multiple: true do |i|
+                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_0_src"
+                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_1_src", name: "item[images_attributes][1][src]"
+                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_2_src", name: "item[images_attributes][2][src]"
+                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_3_src", name: "item[images_attributes][3][src]"
+                  = i.file_field "#" ,class:"hidden-field", id: "item_images_attributes_4_src", name: "item[images_attributes][4][src]"
+              
       .content-name.border
         .content__name
           %label 商品名
@@ -63,25 +72,25 @@
             %circle{cx: "12", cy: "16.24", r: "1"}
         %label 配送料の負担
         %span.required 必須
-        = f.select "#", ["選択してください", "送料込み(出品者負担)", "着払い(購入者負担)"]
+        = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :cost
 
 
         .content__method
         %label 配送の方法
         %span.required 必須
-        = f.select "#", ["選択してください", "未定", "らくらくメルカリ便","ゆうゆうメルカリ便", "ゆうメール","レターパック","普通郵便(定形、定形外)","クロネコヤマト","ゆうパック", "クリックポスト","ゆうパケット"]
+        = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name
 
 
         .content__area
         %label 発送元の地域
         %span.required 必須
-        = f.select "#", ["選択してください", "北海道", "青森県","岩手県", "宮城県","秋田県","山形県","福島県","茨城県", "栃木県","群馬県","埼玉県","千葉県", "東京都","神奈川県","新潟県","富山県","石川県","福井県", "山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県", "和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県", "大分県","宮崎県","鹿児島県", "沖縄県","未定"]
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name
 
 
         .content__day
         %label 発送までの日数
         %span.required 必須
-        = f.select "#", ["選択してください", "1~2日で発送", "2~3日で発送","4~7日で発送"]
+        = f.collection_select :shipping_date_id, ShippingDate.all, :id, :date
 
 
 
