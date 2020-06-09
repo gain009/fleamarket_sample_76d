@@ -1,0 +1,211 @@
+@mixin mark{
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 2px 4px;
+  background-color: #ff0211;
+  color: #fff;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+.exhibition {
+  background-color:#f5f5f5;
+  min-height: 100vh;
+  .contents{
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);    
+    .border {
+      border-bottom: 1px solid rgb(230, 230, 230);
+    }    
+    label{
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4em;
+    }
+    .required{
+      @include mark;
+    }
+    .any{
+      @include mark;
+      background-color: #afafaf;
+    }
+    input,select {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      height: 48px;
+      padding: 0 16px;
+      width: 100%;
+      margin-top: 16px;
+      margin-bottom: 30px;
+    }    
+    p {
+      color: rgb(136, 136, 136);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4em;
+      margin-bottom: 24px;
+    }
+    .content-image{
+      height: 240px;
+      padding: 40px;
+      .content__image{
+        &__message{
+          margin: 20px;
+        }
+        &__box{
+          text-align: center;
+          margin-top: 20px;
+          background-color: rgb(230, 230, 230);
+          width: 100%;
+          padding: 40px 0;
+          border: 1px dashed ;
+        }
+      }
+    }
+    .content-name{
+      height: 380px;
+      padding: 40px;  
+      textarea{
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #222;
+        padding: 13px 16px;
+        vertical-align: middle;
+        width: 100%;
+        margin-top: 16px;
+      }
+    }
+    .content-detail {
+      height: 500px;
+      padding: 40px;
+    }
+    .content-info {
+      position: relative;
+      height: 500px;
+      padding: 40px;
+      .path,svg{
+        fill: rgb(0, 195, 255);
+        position: absolute;
+        top: 41px;
+        left: 125px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .content-price {
+      height: 620px;
+      padding: 40px 40px 0px 40px;
+      position: relative;
+      .path,svg{
+        fill: rgb(0, 195, 255);
+        position: absolute;
+        top: 41px;
+        left: 220px;
+        width: 16px;
+        height: 16px;
+      }
+      .content__selling-price{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__from {
+          width: 300px;
+        }
+        .yen{
+          position: absolute;
+          top: 28px;
+          right: 305px;
+        }
+        span{
+          margin-bottom: 200px;
+        }
+      }
+    }
+    .fee-form {
+      padding: 12px 0px;
+      -webkit-box-align: center;
+      align-items: center;
+      box-sizing: content-box;
+      display: flex;
+      height: 46px;
+      .name {
+        margin-right: auto;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: lighter;
+      }
+    }
+    .return-form {
+      padding: 12px 0px;
+      -webkit-box-align: center;
+      align-items: center;
+      box-sizing: content-box;
+      display: flex;
+      height: 46px;
+      .name {
+        margin-right: auto;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: lighter;
+      }
+    }
+    .btn-form {
+      width: 360px;
+      margin: 0px auto 32px;
+      .sale-btn {
+        width: 100%;
+        background-color: #3CCACE;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
+        min-height: 48px;
+        padding: 0 24px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+      }
+      button.save-btn {
+        width: 100%;
+        margin-top: 24px;
+        background-color: #ccc;
+        border-color: transparent;
+        color: #222;
+        font-size: 17px;
+        font-weight: 600;
+        min-height: 48px;
+        padding: 0 24px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+      }
+      a.back {
+        margin-top: 24px;
+        color: #0095ee;
+        display: flex;
+        width: 100%;
+        height: 20px;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        text-decoration: none;
+        word-break: keep-all;
+        font-size: 14px;
+      }
+    }
+    .attention {
+      margin: 0px 40px 64px;
+      font-size: 12px;
+      line-height: 1.4em;
+      a {
+        color: #0095ee;
+        text-decoration: none;
+        word-break: keep-all;
+      }
+    }
+  }
+}
