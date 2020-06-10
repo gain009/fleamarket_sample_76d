@@ -7,5 +7,9 @@ $(function () {
   $("#open-popup").click(function(e) {
     deletePopUp.fadeIn(300);
   });
+  // ポップアップを閉じる
+  $(".cancel-button").click(function(e) {
+    deletePopUp.fadeOut(300);
+  });
 
 });
