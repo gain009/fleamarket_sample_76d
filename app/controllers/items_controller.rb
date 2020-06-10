@@ -18,6 +18,19 @@ class ItemsController < ApplicationController
     @same_category_items = Item.where(category_id: @item.category_id).order(created_at: "DESC").limit(3)
   end
 
+
+
+
+
+
+
+
+
+  def destroy
+    Item.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
   def buy_confirmation
   end
 end
