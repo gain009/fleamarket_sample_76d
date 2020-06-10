@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_032400) do
+ActiveRecord::Schema.define(version: 2020_06_10_050938) do
 
   create_table "brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -38,10 +38,8 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
   create_table "destinations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "destination_family_name", null: false
     t.string "destination_first_name", null: false
-    t.string "destination_family_name_kana", null: false
     t.string "destination_first_name_kana", null: false
     t.string "post_code", null: false
-    t.string "prefecture", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building_name"
@@ -49,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "destination_family_name_kana", null: false
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
@@ -66,19 +66,26 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
     t.string "description", null: false
     t.string "status", null: false
     t.string "size", null: false
-    t.integer "shipping_cost", null: false
-    t.integer "shipping_method", null: false
-    t.integer "shipping_date", null: false
     t.integer "prefecture_id", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shipping_method_id", null: false
+    t.integer "shipping_cost_id", null: false
+    t.integer "shipping_date_id", null: false
     t.integer "buyer_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,8 +100,8 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
     t.string "first_name_kana", null: false
     t.date "birth_day", null: false
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

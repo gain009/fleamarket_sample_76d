@@ -18,7 +18,7 @@
     %h3.input__name
       送付先住所入力
     .input__group
-      = form_for @destination do |f| 
+      = form_for(@destination, url: destinations_path, method: :post) do |f| 
         = render "devise/shared/error_messages", resource: @destination
         .input__group__content
           %label.input__group__content__label
@@ -52,7 +52,8 @@
           %span.input__group__content__required
             必須
           %br
-          = f.text_field :prefecture, {autofocus: true, placeholder: "例）大阪府", class: 'input__group__content__box'}
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'input__group__content__box--pulldown'
+          -# = f.text_field :prefecture_id, {autofocus: true, placeholder: "例）大阪府", class: 'input__group__content__box'}
 
         .input__group__content
           %label.input__group__content__label
