@@ -11,5 +11,19 @@ $(function () {
   $(".cancel-button").click(function(e) {
     deletePopUp.fadeOut(300);
   });
+  // 削除確定
+  deleteBtn.on("click", function(e) {
+    var url = $("#delete-link").attr("href");
+    $.ajax({
+      url: url,
+      type: "DELETE"
+    })
+    .done(function() {
+      deletePopUp.fadeOut(300);
+    })
+    .fail(function() {
+      alert("通信に失敗しました");
+    });
+  });
 
 });
