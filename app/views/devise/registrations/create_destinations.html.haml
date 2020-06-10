@@ -1,0 +1,28 @@
+.signUp
+  .sign-header
+    .sign-header__content
+      .sign-header__content__image
+        = link_to (image_tag "/logo/logo.png", size: "185x45"), root_path
+      %nav.sign-header__content__progress
+        %ol
+          %li.sign-header__content__progress__text__passive{ id: "first" }
+            会員情報
+            .sign-header__content__progress__round__passive
+          %li.sign-header__content__progress__text__passive
+            送付先住所入力
+            .sign-header__content__progress__round__passive
+          %li.sign-header__content__progress__text__active{ id: "end" }
+            登録完了
+            .sign-header__content__progress__round__active
+  .complete
+    %h3.complete__name
+      会員登録完了
+    .complete__text
+      .complete__text__content1
+        ありがとうございます。
+      .complete__text__content2
+        会員登録が完了しました
+      .complete__text__content3
+        = link_to "トップへ戻る", root_path
+  
+  = render 'modules/sign_footer'
