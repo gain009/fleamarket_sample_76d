@@ -87,3 +87,20 @@
         .items
           = render partial: 'related_item', collection: @same_category_items, as: "item"
 = render "modules/footer"
+
+-# 削除ボタンクリック時のポップアップ
+#delete-popup.overlay
+  .popup-window
+    .texts
+      %p.bold
+        確認
+      %p
+        削除すると二度と復活できません。
+      %p.margin-text
+        本当に削除しますか？
+    .buttons
+      .cancel-button
+        キャンセル
+      .delete-button
+        削除する
+        = link_to "", item_path(@item), method: :delete, id: "delete-link"
