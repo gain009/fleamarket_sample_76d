@@ -2,7 +2,7 @@
   .headerinner
     .headermain
       .headermain__logo
-        = link_to "#" do
+        = link_to "/" do
           = image_tag '/logo/logo.png', class: "headermain__logo--img"
 
       .headermain__search
@@ -18,8 +18,17 @@
           = link_to "カテゴリー", "#"
         %li.lists__left__item
           = link_to "ブランド", "#"
-      %ul.lists__right
-        %li.lists__right__item.lists__right__item--login
-          = link_to "ログイン", new_user_session_path, class: 'items'
-        %li.lists__right__item.lists__right__item--new
-          = link_to "新規会員登録", new_user_registration_path, class: 'items'
+
+      - if user_signed_in?
+        %ul.lists__right
+          %li.lists__right__item.lists__right__item--login
+            = link_to "マイページ", user_path(current_user), class: 'items'
+          %li.lists__right__item.lists__right__item--new
+            = link_to "ログアウト", destroy_user_session_path, class: 'items'
+            
+      - else
+        %ul.lists__right
+          %li.lists__right__item.lists__right__item--login
+            = link_to "ログイン", new_user_session_path, class: 'items'
+          %li.lists__right__item.lists__right__item--new
+            = link_to "新規会員登録", new_user_registration_path, class: 'items'
