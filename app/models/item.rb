@@ -4,6 +4,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :shipping_cost
   belongs_to_active_hash :shipping_date
+  belongs_to_active_hash :brand
+  belongs_to_active_hash :size
+  belongs_to_active_hash :status
+
 
   validates :name, presence: true
   validates :price, presence: true
@@ -17,9 +21,11 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :user_id, presence: true
 
-  has_many :images
-  belongs_to :user, optional: true
-  belongs_to :category, optional: true
-  belongs_to :brand, optional: true
+
+  has_many :images, dependent: :destroy
+  belongs_to :user
+  belongs_to :category
+  belongs_to :brand
   accepts_nested_attributes_for :images, allow_destroy: true
+  validates :images, presence: true
 end
