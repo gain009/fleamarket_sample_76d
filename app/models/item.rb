@@ -25,7 +25,7 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   belongs_to :user
   belongs_to :category
-  belongs_to :brand
+  belongs_to :brand, optional: true
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :images, presence: true
 end
