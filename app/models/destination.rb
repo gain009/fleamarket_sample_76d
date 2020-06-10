@@ -8,7 +8,7 @@ class Destination < ApplicationRecord
   validates :destination_family_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "全角カタカナのみ使えます" }
   validates :destination_first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "全角カタカナのみ使えます" }
   validates :post_code, presence: true
-  validates :prefecture, presence: true
+  validates :prefecture_id, presence: true
   validates :city, presence: true
   validates :address, presence: true
 
