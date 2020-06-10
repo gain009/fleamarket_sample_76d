@@ -69,7 +69,6 @@
           この商品を削除する
       - else
         = link_to "購入画面に進む", item_buy_confirmation_path(item_id: @item.id), class: "item-container__buy-btn"
-        
       .item-container__explanation
         = @item.description
     .related-items
