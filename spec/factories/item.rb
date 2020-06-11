@@ -1,16 +1,5 @@
 FactoryBot.define do
-  factory :user do  #値は適当です
-    nickname          {"sasa"}
-    email             {"kkk@gmail.com"}
-    password          {"00000000"}  #登録の際に必要なので追記！
-    encrypted_password{"00000000"}
-    family_name       {"sasaki"}
-    first_name        {"goro"}
-    family_name_kana  {"sasaki"}
-    first_name_kana   {"goro"}
-    birth_day         {"1990-08-24"}
-  end
-
+  
   factory :category do  
     name              {"aaa"}
   end
