@@ -1,6 +1,5 @@
 class ShippingMethod < ActiveHash::Base
   self.data = [
-    {id: 0, name: "選択してください"},
     {id: 1, name: "未定"},
     {id: 2, name: "らくらくメルカリ便"},
     {id: 3, name: "ゆうゆうメルカリ便"},

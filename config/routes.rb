@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :user
   resources :items, only: [:index, :new, :show, :destroy] do
 
+
     get "buy/confirmation", to: 'items#buy_confirmation'
   end
 
