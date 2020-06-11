@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_075849) do
+
+ActiveRecord::Schema.define(version: 2020_06_10_050938) do
+
 
   create_table "brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -40,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_075849) do
     t.string "destination_first_name", null: false
     t.string "destination_first_name_kana", null: false
     t.string "post_code", null: false
-    t.string "prefecture", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building_name"
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_06_09_075849) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "destination_family_name_kana", null: false
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
@@ -69,11 +72,11 @@ ActiveRecord::Schema.define(version: 2020_06_09_075849) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shipping_method_id"
-    t.integer "shipping_cost_id"
-    t.integer "shipping_date_id"
-    t.integer "size_id"
-    t.integer "status_id"
+    t.integer "size_id", null: false
+    t.integer "status_id", null: false
+    t.integer "shipping_method_id", null: false
+    t.integer "shipping_cost_id", null: false
+    t.integer "shipping_date_id", null: false
     t.integer "buyer_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
@@ -91,6 +94,9 @@ ActiveRecord::Schema.define(version: 2020_06_09_075849) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birth_day", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

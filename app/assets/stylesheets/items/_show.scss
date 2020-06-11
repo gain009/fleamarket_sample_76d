@@ -80,18 +80,14 @@
         }
       }
       &__buy-btn {
-        display: block;
-        margin-top: 16px;
-        background-color: #3CCACE;
-        color: #fff;
-        text-decoration: none;
-        font-size: 24px;
-        line-height: 60px;
-        text-align: center;
-        font-weight: 600;
-        &:hover {
-          background-color: #27BABE;
-        }
+        @include link-btn();
+      }
+      &__edit-btn {
+        @include link-btn(18px);
+      }
+      &__delete-btn {
+        @include link-btn(18px, darkgray, gray);
+        cursor: pointer;
       }
       &__explanation {
         padding-top: 32px;
@@ -132,6 +128,55 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+// 商品削除ボタンポップアップ
+.overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+#delete-popup {
+  display: none;
+  .popup-window {
+    position: absolute;
+    width: 70%;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 14px;
+    background-color: #fff;
+    .texts {
+      padding: 70px;
+      .bold {
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .margin-text {
+        margin-top: 20px;
+      }
+    }
+    .buttons {
+      height: 60px;
+      display: flex;
+      line-height: 60px;
+      .cancel-button {
+        border: 1px solid #f5f5f5;
+        width: 50%;
+        cursor: pointer;
+      }
+      .delete-button {
+        border: 1px solid #f5f5f5;
+        width: 50%;
+        cursor: pointer;
       }
     }
   }

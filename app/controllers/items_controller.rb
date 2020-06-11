@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
+
+
   def index
+    @items = Item.includes(:images).order('created_at DESC').limit(3)
+    @item_brands = Item.includes(:images).order('brand_id DESC').limit(3)
   end
 
   def new
@@ -9,29 +14,6 @@ class ItemsController < ApplicationController
   end
 
 
-
-
-
-  def show
-  end
-
-  def buy_confirmation
-  end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   def create
     @item = Item.new(item_params)
     @item.buyer_id = current_user.id
@@ -44,6 +26,27 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+
+
+  def show
+    @item = Item.find(params[:id])
+    @same_user_items = Item.where(user_id: @item.user_id).order(created_at: "DESC").limit(3)
+    @same_category_items = Item.where(category_id: @item.category_id).order(created_at: "DESC").limit(3)
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    if current_user.id == item.user_id && item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(item)
+    end
+  end
+
+  def buy_confirmation
+  end
+
 
   
   private

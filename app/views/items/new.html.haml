@@ -84,6 +84,7 @@
         %span.required 必須
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
+
         .content__day
         %label 発送までの日数
         %span.required 必須

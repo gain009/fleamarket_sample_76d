@@ -4,7 +4,7 @@ class CreateDestinations < ActiveRecord::Migration[5.2]
 
       t.string :destination_family_name, null: false
       t.string :destination_first_name, null: false
-      t.string :destination_first_name_kana, null: false
+      t.string :destination_family_name_kana, null: false
       t.string :destination_first_name_kana, null: false
       t.string :post_code, null: false
       t.string :prefecture, null: false
