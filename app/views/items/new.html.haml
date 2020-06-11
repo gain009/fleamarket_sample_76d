@@ -44,10 +44,12 @@
           %p 商品の詳細
           %label カテゴリー
           %span.required 必須
-          = f.collection_select :category_id, CategoryId.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
+          = f.select :category_id, @category_parent_array, {}, {class: 'content__category__select-box', id: 'parent_category'}
+
+          -# = f.collection_select :category_id, CategoryId.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
-          .content__size
+        .content__size
           %label サイズ
           %span.required 必須
           = f.collection_select :size_id, Size.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
