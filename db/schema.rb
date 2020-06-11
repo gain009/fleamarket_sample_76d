@@ -81,13 +81,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -100,8 +93,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.string "first_name_kana", null: false
     t.date "birth_day", null: false
     t.datetime "remember_created_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
