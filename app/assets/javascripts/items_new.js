@@ -32,6 +32,7 @@ $(document).on('turbolinks:load', function(){
       //id・forの値を変更
       a = $('.lebel-box').attr({for: `item_images_attributes_${count}_image`});
     }
+    
   }
 
 

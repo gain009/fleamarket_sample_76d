@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_075849) do
     t.integer "shipping_date_id"
     t.integer "size_id"
     t.integer "status_id"
+    t.integer "buyer_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"

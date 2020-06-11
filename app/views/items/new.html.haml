@@ -10,15 +10,14 @@
           .content__image__message
           最大5枚までアップロードできます
           .flash
-            = flash[:notice]
+            = flash[notice]
           .content__image__box
             .prev-content
             .label-content
               %label{for: "item_images_attributes_0_image",class: "lebel-box"}
                 .content__image__select
-                  %pre.content__image__icon
+                  %p.content__image__icon
                     = icon('fas', 'camera')                
-                    クリックしてファイルを選択
                 = f.fields_for :images ,multiple: true do |i|
                   = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_0_image", name: "item[images_attributes][0][image]"
                   = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_1_image", name: "item[images_attributes][1][image]"
@@ -39,7 +38,6 @@
           %span.required 必須
         .content__textarea
           = f.text_area :description,  rows: "7", maxlength: "1000", required: "", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", required: ""
-          = f.collection_select :user_id, Size.all, :id, :name, required: ""
 
       .content-detail.border
         .content__category
@@ -64,7 +62,6 @@
           %span.required 必須
           = f.collection_select :status_id, Status.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
-
       .content-info.border
         .content__burden
         %p 配送について 
@@ -77,25 +74,20 @@
         %span.required 必須
         = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :cost, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
-
         .content__method
         %label 配送の方法
         %span.required 必須
         = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
-
 
         .content__area
         %label 発送元の地域
         %span.required 必須
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
-
         .content__day
         %label 発送までの日数
         %span.required 必須
         = f.collection_select :shipping_date_id, ShippingDate.all, :id, :date, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
-
-
 
       .content-price.border
         .content__price
