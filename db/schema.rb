@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
   create_table "destinations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "destination_family_name", null: false
     t.string "destination_first_name", null: false
+    t.string "destination_family_name_kana", null: false
     t.string "destination_first_name_kana", null: false
     t.string "post_code", null: false
     t.string "prefecture", null: false
@@ -65,15 +66,15 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
     t.string "description", null: false
     t.string "status", null: false
     t.string "size", null: false
+    t.integer "shipping_cost", null: false
+    t.integer "shipping_method", null: false
+    t.integer "shipping_date", null: false
     t.integer "prefecture_id", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shipping_method_id", null: false
-    t.integer "shipping_cost_id", null: false
-    t.integer "shipping_date_id", null: false
     t.integer "buyer_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
@@ -91,6 +92,9 @@ ActiveRecord::Schema.define(version: 2020_06_09_032400) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birth_day", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
