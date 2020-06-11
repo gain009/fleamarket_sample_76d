@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :shipping_cost
   belongs_to_active_hash :shipping_date
@@ -20,12 +21,13 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :category_id, presence: true
   validates :user_id, presence: true
-
+  validates :images, presence: true
 
   has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true
+
   belongs_to :user
   belongs_to :category
   belongs_to :brand, optional: true
-  accepts_nested_attributes_for :images, allow_destroy: true
-  validates :images, presence: true
+
 end
