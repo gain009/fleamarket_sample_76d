@@ -330,8 +330,8 @@
           width: 220px;
           display: inline-block;
           float: left;
-          a {
-            background-color: #fff;
+          background-color: #fff;
+          .list_link {
             display: inline-block;
             text-decoration: none;
             position: relative;
@@ -378,32 +378,36 @@
                 }
               }
             }
-            .list__body {
-              background-color: white;
-              color: #333;
-              padding: 16px;
-              &--name {
-                overflow: hidden;
-                line-height: 1.5;
-                font-size: 16px;
-                text-align: left;
+          }
+          .list__body {
+            background-color: white;
+            color: #333;
+            padding: 12px 16px;
+            &--name {
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left;
+            }
+            &--details {
+              font-size: 16px;
+              ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .like--icon {
+                  display: inline-block;
+                  font-size: inherit;
+                  text-rendering: auto;
+                }
+                a {
+                  text-decoration: none;
+                  color: #000;
+                }
               }
-              &--details {
-                font-size: 16px;
-                ul {
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  &--icon {
-                    display: inline-block;
-                    font-size: inherit;
-                    text-rendering: auto;
-                  }
-                }
-                p {
-                  font-size: 10px;
-                  text-align: left;
-                }
+              p {
+                font-size: 10px;
+                text-align: left;
               }
             }
           }

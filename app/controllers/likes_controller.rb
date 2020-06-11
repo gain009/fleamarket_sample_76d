@@ -1,13 +1,14 @@
 class LikesController < ApplicationController
 
-  before_action :set_item, only: [:create, :destroy]
+  before_action :set_item
 
   def create
-    @like = current_user.likes.create(item_id: params[:item_id])
+    like = Like.create(user_id: current_user.id, item_id: @item.id)
+    like.save
   end
 
   def destroy
-    like = current_user.likes.find_by(item_id: params[:item_id], user_id: current_user.id)
+    like = Like.find_by(user_id: current_user.id, item_id: @item.id)
     like.destroy
   end
 
