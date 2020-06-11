@@ -10,9 +10,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    # @item.update( buyer_id: user.id)
+    if @item.save
       redirect_to root_path
     else
+      @item = Item.new
+      @item.images.new
+      flash[:notice] = "画像は一枚以上入れて下さい"
       render :new
     end
   end

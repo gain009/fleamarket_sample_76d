@@ -9,6 +9,8 @@
           %span.required 必須
           .content__image__message
           最大5枚までアップロードできます
+          .flash
+            = flash[:notice]
           .content__image__box
             .prev-content
             .label-content
@@ -44,13 +46,13 @@
           %p 商品の詳細
           %label カテゴリー
           %span.required 必須
-          = f.collection_select :category_id, CategoryId.all, :id, :name, required: ""
+          = f.collection_select :category_id, CategoryId.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
           .content__size
           %label サイズ
           %span.required 必須
-          = f.collection_select :size_id, Size.all, :id, :name, required: ""
+          = f.collection_select :size_id, Size.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
         .content__brand
           %label ブランド
@@ -60,7 +62,7 @@
         .content__status
           %label 商品の状態
           %span.required 必須
-          = f.collection_select :status_id, Status.all, :id, :name, required: ""
+          = f.collection_select :status_id, Status.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
       .content-info.border
@@ -73,25 +75,25 @@
             %circle{cx: "12", cy: "16.24", r: "1"}
         %label 配送料の負担
         %span.required 必須
-        = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :cost, required: ""
+        = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :cost, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
         .content__method
         %label 配送の方法
         %span.required 必須
-        = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, required: ""
+        = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
         .content__area
         %label 発送元の地域
         %span.required 必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, required: ""
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
         .content__day
         %label 発送までの日数
         %span.required 必須
-        = f.collection_select :shipping_date_id, ShippingDate.all, :id, :date, required: ""
+        = f.collection_select :shipping_date_id, ShippingDate.all, :id, :date, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
 
