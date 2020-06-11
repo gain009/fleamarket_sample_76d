@@ -18,14 +18,6 @@ class ItemsController < ApplicationController
     @same_category_items = Item.where(category_id: @item.category_id).order(created_at: "DESC").limit(3)
   end
 
-
-
-
-
-
-
-
-
   def destroy
     item = Item.find(params[:id])
     if current_user.id == item.user_id && item.destroy
