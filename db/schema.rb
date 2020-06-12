@@ -70,23 +70,17 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size_id", null: false
+    t.integer "status_id", null: false
     t.integer "shipping_method_id", null: false
     t.integer "shipping_cost_id", null: false
     t.integer "shipping_date_id", null: false
     t.integer "buyer_id"
-    t.integer "size_id", null: false
-    t.integer "status_id", null: false
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -100,8 +94,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.string "first_name_kana", null: false
     t.date "birth_day", null: false
     t.datetime "remember_created_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
