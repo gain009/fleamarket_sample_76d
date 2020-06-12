@@ -18,6 +18,28 @@ $(document).on('turbolinks:load', function(){
     return html;
   }
 
+  // 投稿編集時
+  //items/:i/editページへリンクした際のアクション=======================================
+  if (window.location.href.match(/\/items\/\d+\/edit/)){
+    //登録済み画像のプレビュー表示欄の要素を取得する
+    var prevContent = $('.label-content').prev();
+    labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+    $('.label-content').css('width', labelWidth);
+    //プレビューにidを追加
+    $('.preview-box').each(function(index, box){
+      $(box).attr('id', `preview-box__${index}`);
+    })
+    //削除ボタンにidを追加
+    $('.delete-box').each(function(index, box){
+      $(box).attr('id', `delete_btn_${index}`);
+    })
+    var count = $('.preview-box').length;
+    //プレビューが5あるときは、投稿ボックスを消しておく
+    if (count == 5) {
+      $('.label-content').hide();
+    }
+  }
+
   //ラベルのwidth・id・forの値を変更==================================================
   function setLabel(count) {
     //プレビューが5個あったらラベルを隠す
@@ -68,17 +90,37 @@ $(document).on('turbolinks:load', function(){
   // 画像の削除=====================================================================
   $(document).on('click', '.delete-btn', function() {
     let id = $(this).attr('data-delete-id')
-    //削除用チェックボックスがある場合はチェックボックスにチェックを入れる
-    if ($(`#item_images_attributes_${id}__destroy`).length) {
+    //新規投稿時
+    //削除用チェックボックスの有無で判定
+    if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
+      //フォームの中身を削除 
+      $(`#item_images_attributes_${id}_image`).val("");
+      var count = $('.preview-box').length;
+      //5個めが消されたらラベルを表示
+      if (count == 4) {
+        $('.label-content').show();
+      }
+      setLabel(count);
+      if(id < 5){
+        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+
+      }
+    } else {
+
+      //投稿編集時
       $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+      //5個めが消されたらラベルを表示
+      if (count == 4) {
+        $('.label-content').show();
+      }
+
+      //ラベルのwidth操作
+      setLabel();
+      //ラベルのidとforの値を変更
+      //削除したプレビューのidによって、ラベルのidを変更する
+      if(id < 5){
+        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+      }
     }
-    //画像を消去
-    $(this).parent().parent().parent().remove();
-    //フォームの中身を削除
-    $(`#item_images_attributes_${id}_image`).val("");
-    //プレビューの数を取得
-    let count = $('.preview-box').length;
-    //countに応じてラベルのwidth・id・forの値を変更
-    setLabel(count);
   });
 });
