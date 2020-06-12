@@ -1,0 +1,119 @@
+.exhibition
+  = render 'modules/sub_header'
+  .contents
+    = form_for @item do |f|
+      .content-image.border
+        .content__image
+          %label 出品画像
+          %span.required 必須
+          .content__image__message
+          最大5枚までアップロードできます
+          .flash
+            = flash[:notice]
+          .content__image__box
+            .prev-content
+              - @item.images.each do |image|
+                .preview-box
+                  .upper-box
+                    = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                  .lower-box
+                    .delete-box
+                      .delete-btn
+                        %span 削除
+            .label-content
+              = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+                .content__image__select
+                  %p.content__image__icon
+                    = icon('fas', 'camera')
+                = f.fields_for :images ,multiple: true do |i|
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_0_image", name: "item[images_attributes][0][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_1_image", name: "item[images_attributes][1][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_2_image", name: "item[images_attributes][2][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_3_image", name: "item[images_attributes][3][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_4_image", name: "item[images_attributes][4][image]"
+      .content-name.border
+        .content__name
+          %label 商品名
+          %span.required 必須
+        .content__input
+          = f.text_field :name, class: "sale-info", placeholder: "40文字まで", type: "text", maxlength: "40", required: ""
+        .content__explanation
+          %label 商品の説明
+          %span.required 必須
+        .content__textarea
+          = f.text_area :description,  rows: "7", maxlength: "1000", required: "", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", required: ""
+      .content-detail.border
+        .content__category
+          %p 商品の詳細
+          %label カテゴリー
+          %span.required 必須
+          = f.collection_select :category_id, CategoryId.all, :id, :name, include_blank: "選択して下さい", required: ""
+          .content__size
+          %label サイズ
+          %span.required 必須
+          = f.collection_select :size_id, Size.all, :id, :name, include_blank: "選択して下さい", required: ""
+        .content__brand
+          %label ブランド
+          %span.any 任意
+          = f.collection_select :brand_id, BrandId.all, :id, :name
+        .content__status
+          %label 商品の状態
+          %span.required 必須
+          = f.collection_select :status_id, Status.all, :id, :name, include_blank: "選択して下さい", required: ""
+      .content-info.border
+        .content__burden
+        %p 配送について 
+        = link_to "#" do
+          %svg.question{width: "24", height: "24", fill: "#222222", rule: "evenodd", viewbox: "0 0 24 24", hidden: "true"}
+            %path{d: "M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18.6A8.6,8.6,0,1,1,20.6,12,8.61,8.61,0,0,1,12,20.6Z"}
+            %path{d: "M14.18,7.52A2.72,2.72,0,0,0,13.25,7a3.16,3.16,0,0,0-1.17-.2A3.12,3.12,0,0,0,10,7.43,2.92,2.92,0,0,0,9,9.27c0,.12,0,.18.12.19l1.4.22c.09,0,.15,0,.17-.13a1.63,1.63,0,0,1,.44-.91A1.2,1.2,0,0,1,12,8.31a1.17,1.17,0,0,1,.88.33,1.15,1.15,0,0,1,.33.83,1.62,1.62,0,0,1-.12.61,3.46,3.46,0,0,1-.41.67l-1.23,1.67a2.53,2.53,0,0,0-.31.58,2.51,2.51,0,0,0-.09.75v.63a.14.14,0,0,0,.16.16h1.44a.14.14,0,0,0,.16-.16v-.45a1.7,1.7,0,0,1,.07-.56,1.31,1.31,0,0,1,.24-.42l1.22-1.67A2.93,2.93,0,0,0,15,9.46a2.62,2.62,0,0,0-.22-1.09A2.43,2.43,0,0,0,14.18,7.52Z"}
+            %circle{cx: "12", cy: "16.24", r: "1"}
+        %label 配送料の負担
+        %span.required 必須
+        = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :cost, include_blank: "選択して下さい", required: ""
+        .content__method
+        %label 配送の方法
+        %span.required 必須
+        = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, include_blank: "選択して下さい", required: ""
+        .content__area
+        %label 発送元の地域
+        %span.required 必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい", required: ""
+        .content__day
+        %label 発送までの日数
+        %span.required 必須
+        = f.collection_select :shipping_date_id, ShippingDate.all, :id, :date, include_blank: "選択して下さい", required: ""
+      .content-price.border
+        .content__price
+          %p 価格（¥300〜9,999,999）
+          = link_to "#" do
+            %svg.question{width: "24", height: "24", fill: "#222222", rule: "evenodd", viewbox: "0 0 24 24", hidden: "true"}
+              %path{d: "M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18.6A8.6,8.6,0,1,1,20.6,12,8.61,8.61,0,0,1,12,20.6Z"}
+              %path{d: "M14.18,7.52A2.72,2.72,0,0,0,13.25,7a3.16,3.16,0,0,0-1.17-.2A3.12,3.12,0,0,0,10,7.43,2.92,2.92,0,0,0,9,9.27c0,.12,0,.18.12.19l1.4.22c.09,0,.15,0,.17-.13a1.63,1.63,0,0,1,.44-.91A1.2,1.2,0,0,1,12,8.31a1.17,1.17,0,0,1,.88.33,1.15,1.15,0,0,1,.33.83,1.62,1.62,0,0,1-.12.61,3.46,3.46,0,0,1-.41.67l-1.23,1.67a2.53,2.53,0,0,0-.31.58,2.51,2.51,0,0,0-.09.75v.63a.14.14,0,0,0,.16.16h1.44a.14.14,0,0,0,.16-.16v-.45a1.7,1.7,0,0,1,.07-.56,1.31,1.31,0,0,1,.24-.42l1.22-1.67A2.93,2.93,0,0,0,15,9.46a2.62,2.62,0,0,0-.22-1.09A2.43,2.43,0,0,0,14.18,7.52Z"}
+              %circle{cx: "12", cy: "16.24", r: "1"}
+        .content__selling-price
+          .content__selling-price__price
+            %label 販売価格
+            %span.required 必須
+            %span.yen ¥
+          .content__selling-price__from
+            = f.number_field :price,  placeholder: "0", type: "number", min: "500", max: "9999999",style: "text-align:right;", required: "", value: @item.price
+        .fee-form
+          .name 販売手数料(10%)
+          %span.value ー
+        %hr.underline
+          .return-form
+            .name 販売利益
+            %span.value ー
+        .btn-form
+          = f.submit "出品する", class:"sale-btn"
+          %button.save-btn 下書きに保存
+          = link_to "#", class: "back" do
+            もどる
+        .attention
+          .attention__form
+            禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+            = link_to "#", class: "back" do
+              加盟店規約
+            に同意したことになります。
+  = render 'modules/sub_footer'
