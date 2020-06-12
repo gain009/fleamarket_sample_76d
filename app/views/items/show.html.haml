@@ -8,6 +8,9 @@
         .item-container__info__image
           .image-show
             = image_tag "#{@item.images[0].image}", alt: "画像"
+              - if @item.buyer_id.present?
+              .image-show__sold
+                .image-show__sold__inner SOLD
           .image-list
             - @item.images.each_with_index do |image, i|
               .image-list__item
