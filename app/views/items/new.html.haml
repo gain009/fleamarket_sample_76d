@@ -57,7 +57,7 @@
         .content__brand
           %label ブランド
           %span.any 任意
-          = f.collection_select :brand_id, BrandId.all, :id, :name
+          = f.collection_select :brand_id, @brand, :id, :name,{prompt: "---"}
 
         .content__status
           %label 商品の状態
