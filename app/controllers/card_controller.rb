@@ -10,6 +10,11 @@ class CardController < ApplicationController
   def pay 
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
+
+
+    logger.debug('###detabase')
+
+
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(

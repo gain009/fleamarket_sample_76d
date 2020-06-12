@@ -1,3 +1,85 @@
-// Place all the styles related to the card controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// カード登録画面
+@mixin form {
+  height: 45px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.card {
+  background-color: #f5f5f5;
+  &___information {
+    height: 600px;
+    width: 600px;
+    margin: auto;
+    background-color: white;
+    h2 {
+      font-size: 20px;
+      text-align: center;
+      padding-bottom: 15px;
+      padding-top: 60px;
+    }
+    &__content {
+      width: 330px;
+      margin: auto;
+      padding-top: 20px;
+      border-top: 1px solid #f5f5f5 ;
+      &__detail {
+        margin-left: 16px;
+        label {
+          font-size: 15px;
+        }
+        &__image {
+          width: 300px;
+          height: 40px;
+          padding-top: 7px;
+          &-detail {
+            width: 100%;
+          }
+        }
+        &__form {
+          @include form;
+          width: 300px;
+          margin-top: 5px;
+        }
+        &__expire__date {
+          padding-top: 8px;
+          &__month {
+            @include form;
+            width: 100px;
+          }
+          &__year {
+            @include form;
+            width: 100px;
+          }
+          &__security {
+            margin-top: 15px;
+            &__code {
+              margin-top: 7px;
+              &__cvc {
+                @include form;
+                width: 300px;
+              }
+              &__submit {
+                margin-top: 20px;
+                &__button {
+                  @include form;
+                  width: 300px;
+                  background-color: $blue;
+                  color: white;
+                }
+                &__button:hover {
+                  background-color: #B5F3E1;
+                }
+              }
+            }
+          }
+        }
+      } 
+    }
+  }
+}
+
+
+// カード確認・削除画面
+
