@@ -2,6 +2,10 @@
 .exhibition
   = render 'modules/sub_header'
   .contents
+    %p.error-message
+      - @errors.each do |message|
+        = message
+        %br/
     = form_for @item do |f|
       .content-image.border
         .content__image
@@ -9,8 +13,6 @@
           %span.required 必須
           .content__image__message
           最大5枚までアップロードできます
-          .flash
-            = flash[notice]
           .content__image__box
             .prev-content
             .label-content

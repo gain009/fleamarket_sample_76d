@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     unless user_signed_in?
       redirect_to root_path
     end
+    @errors = []
     @item = Item.new
     @item.images.new
   end
@@ -23,9 +24,9 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      @errors = @item.errors.full_messages
       @item = Item.new
       @item.images.new
-      flash[:notice] = "画像は一枚以上入れて下さい"
       render :new
     end
   end
