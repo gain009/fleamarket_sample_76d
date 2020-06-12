@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
       labelWidth = (620 - parseInt($(imagePrev).css('width')));
       $('.label-content').css('width', labelWidth);
       //id・forの値を変更
-      a = $('.lebel-box').attr({for: `item_images_attributes_${count}_image`});
+      a = $('.label-box').attr({for: `item_images_attributes_${count}_image`});
     }
     
   }
