@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
-
+  before_action :set_parents, only: [:new, :create]
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
@@ -11,14 +11,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-
-    #カテゴリセレクトボックスの初期値設定
-    @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-      
-    end
   end
 
 
@@ -33,6 +25,10 @@ class ItemsController < ApplicationController
       flash[:notice] = "画像は一枚以上入れて下さい"
       render :new
     end
+  end
+
+  def get_parents
+    @parents = Category.where(ancestry: nil)
   end
 
   # 親カテゴリーが選択された後に動くアクション
