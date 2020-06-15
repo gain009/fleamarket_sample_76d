@@ -12,13 +12,13 @@
             = flash[:notice]
           .content__image__box
             .prev-content
-              - @item.images.each do |image|
+              - @item.images.each_with_index do |image, index|
                 .preview-box
                   .upper-box
                     = image_tag image.image.url, width: "112", height: "112", alt: "preview"
                   .lower-box
                     .delete-box
-                      .delete-btn
+                      .delete-btn{data: {delete: {id: index}}}
                         %span 削除
             .label-content
               = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
@@ -26,11 +26,10 @@
                   %p.content__image__icon
                     = icon('fas', 'camera')
                 = f.fields_for :images ,multiple: true do |i|
-                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_0_image", name: "item[images_attributes][0][image]"
-                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_1_image", name: "item[images_attributes][1][image]"
-                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_2_image", name: "item[images_attributes][2][image]"
-                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_3_image", name: "item[images_attributes][3][image]"
-                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_4_image", name: "item[images_attributes][4][image]"
+                  = i.file_field :image, class: "hidden-field"
+                  = i.check_box :_destroy, class: "hidden-field"
+                - @item.images.length.upto(4) do |i|
+                  %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
       .content-name.border
         .content__name
           %label 商品名
