@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
+
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false

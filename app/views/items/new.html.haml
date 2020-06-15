@@ -2,6 +2,10 @@
 .exhibition
   = render 'modules/sub_header'
   .contents
+    %p.error-message
+      - @errors.each do |message|
+        = message
+        %br/
     = form_for @item do |f|
       .content-image.border
         .content__image
@@ -9,8 +13,6 @@
           %span.required 必須
           .content__image__message
           最大5枚までアップロードできます
-          .flash
-            = flash[notice]
           .content__image__box
             .prev-content
             .label-content
@@ -54,7 +56,7 @@
         .content__brand
           %label ブランド
           %span.any 任意
-          = f.collection_select :brand_id, BrandId.all, :id, :name
+          = f.collection_select :brand_id, @brand, :id, :name,{prompt: "---"}
 
         .content__status
           %label 商品の状態
