@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_brand
 
   def index
@@ -31,7 +32,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     if current_user.id == @item.user_id
       flash[:notice] = ""
       render :edit
@@ -42,7 +42,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -52,13 +51,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @same_user_items = Item.where(user_id: @item.user_id).order(created_at: "DESC").limit(3)
     @same_category_items = Item.where(category_id: @item.category_id).order(created_at: "DESC").limit(3)
   end
 
   def destroy
-    item = Item.find(params[:id])
     if current_user.id == item.user_id && item.destroy
       redirect_to root_path
     else
