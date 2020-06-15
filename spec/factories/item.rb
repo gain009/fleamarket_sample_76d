@@ -1,10 +1,10 @@
 FactoryBot.define do
   
-  factory :category do  
+  factory :category do
     name              {"aaa"}
   end
 
-  factory :brand do  
+  factory :brand do
     name              {"aaa"}
   end
 
@@ -23,7 +23,7 @@ FactoryBot.define do
     category_id              {"1"}
     brand_id                 {"1"}
     after(:build) do |item|
-      item.images << build(:image, item: item) 
-    end   
+      item.images << build(:image, item: item)
+    end
   end
 end

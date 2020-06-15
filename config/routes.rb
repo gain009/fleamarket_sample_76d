@@ -14,9 +14,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :user
-  resources :items, only: [:index, :new, :create, :show, :destroy] do
-
-
+  
+  resources :items do
     get "buy/confirmation", to: 'items#buy_confirmation'
   end
 
