@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
   before_action :set_brand
 
-
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
     @item_brands = Item.includes(:images).order('brand_id DESC').limit(3)
@@ -18,7 +17,6 @@ class ItemsController < ApplicationController
     @item.images.new
   end
 
-
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -30,8 +28,6 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
-
 
   def show
     @item = Item.find(params[:id])
@@ -51,12 +47,9 @@ class ItemsController < ApplicationController
   def buy_confirmation
   end
 
-
-  
   private
 
   def item_params
-    
     params.require(:item).permit(:name, :price, :description, :category_id, :size_id, :status_id, :shipping_cost_id, :shipping_method_id, :prefecture_id, :shipping_date_id, :brand_id, :buyer_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
