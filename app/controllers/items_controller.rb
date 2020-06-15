@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
+  before_action :authenticate_user!, only: [:buy_confirmation, :edit, :update, :destroy]
   before_action :set_brand
 
   def index
