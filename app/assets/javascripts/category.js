@@ -3,7 +3,7 @@
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+    var html = `<option value="${category.id}"data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
@@ -20,11 +20,10 @@ $(function(){
   // 孫カテゴリーの表示作成
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
-                              <div class='listing-select-wrapper__box'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
-                                  <option value="---" data-category="---">---</option>
-                                  ${insertHTML}
+    grandchildSelectHtml = `<div class='content__category3' id= 'grandchildren_wrapper'>
+                              <select class="content__category__select-box" id="grandchild_category" name="item[category_id]">
+                                <option value="---" data-category="---">---</option>
+                                ${insertHTML}
                                 </select>
                               </div>
                             </div>`;
