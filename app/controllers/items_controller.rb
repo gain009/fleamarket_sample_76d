@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :destroy]
+  before_action :set_brand
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
@@ -8,6 +9,10 @@ class ItemsController < ApplicationController
   end
 
   def new
+    unless user_signed_in?
+      redirect_to root_path
+    end
+    @errors = []
     @item = Item.new
     @item.images.new
     flash[:notice] = ""
@@ -18,9 +23,9 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      @errors = @item.errors.full_messages
       @item = Item.new
       @item.images.new
-      flash[:notice] = "画像は一枚以上入れて下さい"
       render :new
     end
   end
