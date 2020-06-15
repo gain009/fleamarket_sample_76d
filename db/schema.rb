@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prefecture_id", null: false
     t.string "destination_family_name_kana", null: false
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
