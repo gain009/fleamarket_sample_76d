@@ -2,56 +2,67 @@
 .exhibition
   = render 'modules/sub_header'
   .contents
-    = form_for "#" do |f|
+    %p.error-message
+      - @errors.each do |message|
+        = message
+        %br/
+    = form_for @item do |f|
       .content-image.border
         .content__image
           %label 出品画像
           %span.required 必須
           .content__image__message
-          最大10枚までアップロードできます
+          最大5枚までアップロードできます
           .content__image__box
-            %label{class: "input-box__image"}
-              = icon('fas', 'camera')
-              .content__image__select
-                クリックしてファイルを選択
-              = f.file_field "#", type: 'file', name: "#", style: "display:none"
+            .prev-content
+            .label-content
+              %label{for: "item_images_attributes_0_image",class: "lebel-box"}
+                .content__image__select
+                  %p.content__image__icon
+                    = icon('fas', 'camera')                
+                = f.fields_for :images ,multiple: true do |i|
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_0_image", name: "item[images_attributes][0][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_1_image", name: "item[images_attributes][1][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_2_image", name: "item[images_attributes][2][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_3_image", name: "item[images_attributes][3][image]"
+                  = i.file_field :image ,class:"hidden-field", id: "item_images_attributes_4_image", name: "item[images_attributes][4][image]"
+              
       .content-name.border
         .content__name
           %label 商品名
           %span.required 必須
         .content__input
-          = f.text_field "#", class: "sale-info", placeholder: "40文字まで", type: "text", maxlength: "40", required: ""
+          = f.text_field :name, class: "sale-info", placeholder: "40文字まで", type: "text", maxlength: "40", required: ""
         
         
         .content__explanation
           %label 商品の説明
           %span.required 必須
         .content__textarea
-          = f.text_area "#",  rows: "7", maxlength: "1000", required: "", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :description,  rows: "7", maxlength: "1000", required: "", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", required: ""
 
       .content-detail.border
         .content__category
           %p 商品の詳細
           %label カテゴリー
           %span.required 必須
-          = f.select "#", ["選択してください", "レディース", "メンズ", "ベビー・キッズ", "インテリア・住まい・小物", "本・音楽・ゲーム", "おもちゃ・ホビー・グッズ", "コスメ・香水・美容", "家電・スマホ・カメラ","スポーツ・レジャー","スポーツ・レジャー", "ハンドメイド", "チケット", "自動車・オートバイ", "その他"]
+          = f.collection_select :category_id, CategoryId.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
-
+          .content__size
           %label サイズ
           %span.required 必須
-          = f.select "#", ["選択してください","XXS以下", "XS(SS)", "S", "M", "L", "XL(LL)", "2XL(3L)", "3XL(4L)以上","4XL(5L)以上","23.5cm以下","24cm","24.5cm","25cm","25.5cm","26cm以上","60cm","70cm","80cm","90cm","100cm","110cm","120cm","130cm","140cm","150cm","160cm","FREE SIZE"]
+          = f.collection_select :size_id, Size.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
         .content__brand
           %label ブランド
           %span.any 任意
-          = f.text_field "#", placeholder: "例）シャネル", type: "text", maxlength: "40", required: ""
+          = f.collection_select :brand_id, @brand, :id, :name,{prompt: "---"}
 
         .content__status
           %label 商品の状態
           %span.required 必須
-          = f.select "#", ["選択してください", "新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "やや傷や汚れあり", "傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"]
-
+          = f.collection_select :status_id, Status.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
       .content-info.border
         .content__burden
@@ -63,27 +74,23 @@
             %circle{cx: "12", cy: "16.24", r: "1"}
         %label 配送料の負担
         %span.required 必須
-        = f.select "#", ["選択してください", "送料込み(出品者負担)", "着払い(購入者負担)"]
-
+        = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :cost, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
         .content__method
         %label 配送の方法
         %span.required 必須
-        = f.select "#", ["選択してください", "未定", "らくらくメルカリ便","ゆうゆうメルカリ便", "ゆうメール","レターパック","普通郵便(定形、定形外)","クロネコヤマト","ゆうパック", "クリックポスト","ゆうパケット"]
-
+        = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
         .content__area
         %label 発送元の地域
         %span.required 必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
 
         .content__day
         %label 発送までの日数
         %span.required 必須
-        = f.select "#", ["選択してください", "1~2日で発送", "2~3日で発送","4~7日で発送"]
-
-
+        = f.collection_select :shipping_date_id, ShippingDate.all, :id, :date, {include_blank: "選択して下さい", selected: "選択して下さい"}, required: ""
 
       .content-price.border
         .content__price
@@ -99,7 +106,7 @@
             %span.required 必須
             %span.yen ¥
           .content__selling-price__from            
-            = f.number_field "#",  placeholder: "0", type: "number", min: "500", max: "9999999",style: "text-align:right;"            
+            = f.number_field :price,  placeholder: "0", type: "number", min: "500", max: "9999999",style: "text-align:right;", required: ""
         .fee-form
           .name 販売手数料(10%)
           %span.value ー

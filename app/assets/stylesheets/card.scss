@@ -6,6 +6,13 @@
   outline: none;
 }
 
+@mixin card_information {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
 .card {
   background-color: #f5f5f5;
   &___information {
@@ -81,5 +88,60 @@
 }
 
 
+
 // カード確認・削除画面
 
+.information {
+  height: calc(100vh - 290px);
+  background-color: #f5f5f5;
+  position: relative;
+  &__detail {
+    height: 75%;
+    width: 70%;
+    @include card_information;
+    &__card {
+      height: 28%;
+      font-size: 22px;
+      position: relative;
+      border-bottom: 1px solid #ccc;
+      background-color: white;
+      label {
+        font-weight: bold;
+        background-color: white;
+        @include card_information;
+      }
+      &__number {
+        height: 72%;
+        background-color: white;
+        &__date {
+          background-color: white;
+          height: 60%;
+          &__content {
+            text-align: center;
+            font-size: 19px;
+            padding-top: 8%;
+          }
+          &__expire {
+            text-align: center;
+            font-size: 19px;
+            padding-top: 2%;
+          }
+        }
+        &__button {
+          text-align: center;
+          margin-top: 15px;
+          button {
+            @include form;
+            width: 250px;
+            background-color: $blue;
+            color: white;
+            font-size: 15px;
+          }
+          button:hover {
+            background-color: #B5F3E1;
+          }
+        }
+      }
+    }
+  }
+}

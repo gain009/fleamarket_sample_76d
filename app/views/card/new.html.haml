@@ -7,7 +7,7 @@
         .card___information__content__detail
           %label カード番号
           %br
-          = text_field_tag "number", "", class: "card___information__content__detail__form", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card__frame"
+          = text_field_tag "number", "", class: "card___information__content__detail__form", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
           .card___information__content__detail__image
             = image_tag('card_5brand', class: "card___information__content__detail__image-detail")
           %br
@@ -48,5 +48,6 @@
               .card___information__content__detail__expire__date__security__code
                 = text_field_tag "cvc", "", class: "card___information__content__detail__expire__date__security__code__cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
                 .card___information__content__detail__expire__date__security__code__submit
+                #card_token
                 = submit_tag "追加する", id: "token_submit", class:"card___information__content__detail__expire__date__security__code__submit__button"
 = render 'modules/sub_footer'

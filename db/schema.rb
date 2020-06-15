@@ -64,8 +64,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.string "name", null: false
     t.string "price", null: false
     t.string "description", null: false
-    t.string "status", null: false
-    t.string "size", null: false
     t.integer "prefecture_id", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
@@ -76,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.integer "shipping_cost_id", null: false
     t.integer "shipping_date_id", null: false
     t.integer "buyer_id"
+    t.integer "size_id"
+    t.integer "status_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"
