@@ -45,8 +45,6 @@
           %label カテゴリー
           %span.required 必須
           = f.select :category_id, @category_parent_array, {}, {class: 'content__category__select-box', id: 'parent_category', name: ""}
-          -# = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name]]}), {}, {class: 'content__category__select-box', id: 'parent_category', name: ""}
-
 
         .content__size
           %label サイズ
