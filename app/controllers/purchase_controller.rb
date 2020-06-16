@@ -3,6 +3,7 @@ class PurchaseController < ApplicationController
 
 
   def index
+    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to controller: "card", action: "new"
@@ -23,6 +24,10 @@ class PurchaseController < ApplicationController
     :currency => 'jpy', 
   )
   redirect_to action: 'done' 
+  end
+
+  def done
+    @item = Item.find(params[:id])
   end
 
   private

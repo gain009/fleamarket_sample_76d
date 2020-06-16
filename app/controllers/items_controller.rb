@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def buy_confirmation
+    @item = Item.find(params[:id])
   end
 
 

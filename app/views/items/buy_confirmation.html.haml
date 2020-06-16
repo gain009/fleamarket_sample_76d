@@ -6,13 +6,13 @@
       購入内容の確認
     .buy-confirmation__item-box
       .buy-confirmation__item-box__img
-        = image_tag '/test.jpg'
+        = image_tag @item.images[0].image.url
       .buy-confirmation__item-box__info
         %p.buy-confirmation__item-box__info__name
           商品名
         %p.buy-confirmation__item-box__info__price
           %span.price
-            ¥12,000
+            = @item.price
           %span.tax-and-delivery-fee
             (税込)送料込み
     .buy-confirmation__buy-content
@@ -47,7 +47,7 @@
                 %li.user-info-box__info__list__text
                   田中 太郎
               = link_to "変更する", "#", {class: "user-info-box__info__edit"}
-          = link_to purchase_index_path do
+          = link_to "/purchase/index/#{@item.id}" do
             .purchase-confirmation
               %input{ type: 'submit', value: '購入する', class: 'purchase-confirmation__submit' }
 = render 'modules/sub_footer'
