@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     
-   #カテゴリセレクトボックスの初期値設定
+    #カテゴリセレクトボックスの初期値設定
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
