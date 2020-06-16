@@ -1,3 +1,4 @@
+
 = render 'modules/sub_header'
 %main.buy-main
   .buy-confirmation
@@ -46,6 +47,7 @@
                 %li.user-info-box__info__list__text
                   田中 太郎
               = link_to "変更する", "#", {class: "user-info-box__info__edit"}
-          .purchase-confirmation
-            %input{ type: 'submit', value: '購入する', class: 'purchase-confirmation__submit' }
+          = link_to purchase_index_path do
+            .purchase-confirmation
+              %input{ type: 'submit', value: '購入する', class: 'purchase-confirmation__submit' }
 = render 'modules/sub_footer'
