@@ -9,8 +9,10 @@
     position: absolute;
     background-color: $blue;
     padding: 12px 120px;
-    top: 51px;
-    right: 21%;
+    top: 70px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
     border-radius: 5px;
   }
 }
