@@ -4,7 +4,6 @@ class LikesController < ApplicationController
 
   def create
     like = Like.create(user_id: current_user.id, item_id: @item.id)
-    like.save
   end
 
   def destroy
