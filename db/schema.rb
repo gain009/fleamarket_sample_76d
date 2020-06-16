@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "size_id", null: false
-    t.integer "status_id", null: false
     t.integer "shipping_method_id", null: false
     t.integer "shipping_cost_id", null: false
     t.integer "shipping_date_id", null: false
     t.integer "buyer_id"
+    t.integer "size_id"
+    t.integer "status_id"
     t.index ["brand_id"], name: "fk_rails_36708b3aa6"
     t.index ["category_id"], name: "fk_rails_89fb86dc8b"
     t.index ["user_id"], name: "fk_rails_d4b6334db2"

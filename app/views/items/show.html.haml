@@ -26,7 +26,8 @@
               %th
                 カテゴリー
               %td
-                = link_to @item.category.ancestry, "#"
+                = link_to "> #{@item.category.root.name}"
+                = link_to "> #{@item.category.parent.name}", "#"
                 = link_to "> #{@item.category.name}", "#"
             - if @item.brand.present?
               %tr
