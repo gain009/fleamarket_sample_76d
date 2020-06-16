@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
   resources :items do
     get "buy/confirmation", to: 'items#buy_confirmation'
+    resources :likes, only: [:create, :destroy]
   end
 
   get 'mypage/index', to: 'mypage#index'

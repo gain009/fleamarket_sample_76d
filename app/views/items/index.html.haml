@@ -96,26 +96,7 @@
           %h3.title
             新規投稿商品
       .pickup__box__lists
-        - @items.each do |item|
-          .list
-            = link_to item_path(item.id) do
-              .list--img
-                = image_tag item.images[0].image.url
-                  - if item.buyer_id.present?
-                  .list--img__sold
-                    .list--img__sold__inner SOLD
-              .list__body
-                %h3.list__body--name
-                  = item.name
-                .list__body--details
-                  %ul
-                    %li
-                      = "#{item.price}円"
-                    %li
-                      = icon("fas", "star", class: "list__body--details--icon")
-                      0
-                  %p
-                    (税込)
+        = render partial: "item", collection: @items, as: :item
 
   .pickup
     %h2.pickup__head
@@ -126,27 +107,8 @@
           %h3.title
             新規投稿商品
       .pickup__box__lists
-        -  @item_brands.each do |item|
-          .list
-            = link_to item_path(item.id) do
-              .list--img
-                = image_tag item.images[0].image.url
-                  - if item.buyer_id.present?
-                  .list--img__sold
-                    .list--img__sold__inner SOLD
-              .list__body
-                %h3.list__body--name
-                  = item.name
-                .list__body--details
-                  %ul
-                    %li
-                      = "#{item.price}円"
-                    %li
-                      = icon("fas", "star", class: "list__body--details--icon")
-                      0
-                  %p
-                    (税込)
-        
+        = render partial: "item", collection: @item_brands, as: :item
+
 
 %aside.app-bottom
   .app-bottom__inner
