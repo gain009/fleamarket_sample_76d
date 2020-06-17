@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_brand
+  before_action :set_card, except: [:index]
+  before_action :set_destination, except: [:index, :new]
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
@@ -17,7 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     
-   #カテゴリセレクトボックスの初期値設定
+    #カテゴリセレクトボックスの初期値設定
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
@@ -49,6 +51,9 @@ class ItemsController < ApplicationController
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+
+
+
 
   def edit
     if current_user.id == @item.user_id
@@ -86,6 +91,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+
+
+
+
   private
 
   def item_params
@@ -99,4 +108,18 @@ class ItemsController < ApplicationController
   def set_brand
     @brand = Brand.select("name","id")
   end
+
+  def set_card
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @default_card_information = customer.cards.retrieve(card.card_id)
+  end
+
+  def set_destination
+    @destination = Destination.find(params[:id])
+  end
+
+
+
 end

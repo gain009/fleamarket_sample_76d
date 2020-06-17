@@ -9,9 +9,11 @@
         = image_tag @item.images[0].image.url
       .buy-confirmation__item-box__info
         %p.buy-confirmation__item-box__info__name
-          商品名
+          商品名 
+          = @item.name
         %p.buy-confirmation__item-box__info__price
           %span.price
+            ¥
             = @item.price
           %span.tax-and-delivery-fee
             (税込)送料込み
@@ -22,7 +24,8 @@
             .price-box__text
               支払い金額
             .price-box__price
-              ¥12,000
+              ¥
+              = @item.price
           .user-info-box
             .user-info-box__info
               %ul.user-info-box__info__list
@@ -31,9 +34,12 @@
                 %li.user-info-box__info__list__text
                   クレジットカード
                 %li.user-info-box__info__list__text
-                  ************1804
+                  = "**** **** **** " + @default_card_information.last4
                 %li.user-info-box__info__list__text
-                  有効期限 03/23
+                  有効期限 
+                  - exp_month = @default_card_information.exp_month.to_s
+                  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
               = link_to "変更する", card_new_path, {class: "user-info-box__info__edit"}
           .user-info-box
             .user-info-box__info
@@ -41,11 +47,14 @@
                 %li.user-info-box__info__list__bold
                   配送先
                 %li.user-info-box__info__list__text
-                  〒000-0000
+                  〒
+                  = @destination.post_code
                 %li.user-info-box__info__list__text
-                  大阪府 ○市○区 ***町1-1-101
+                  = @destination.city 
+                  = @destination.address
                 %li.user-info-box__info__list__text
-                  田中 太郎
+                  = @destination.destination_family_name
+                  = @destination.destination_first_name
               = link_to "変更する", "#", {class: "user-info-box__info__edit"}
           = link_to "/purchase/index/#{@item.id}" do
             .purchase-confirmation
