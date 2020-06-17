@@ -1,10 +1,13 @@
 Rails.application.routes.draw do  
-  get "items/buy_confirmation/:id", to: 'items#buy_confirmation'
-  get 'purchase/index/:id', to: 'purchase#index'
+  get "items/buy_confirmation/:id", to: 'items#buy_confirmation', as: 'buy_confirmation'
+  get 'purchase/index/:id', to: 'purchase#index', as: 'index'
   post 'pay/:id', to: 'purchase#pay'
   get 'purchase/done/:id', to: 'purchase#done'
   get 'card/new'
   get 'card/show'
+
+
+
   
   
   devise_for :users, controllers: {
