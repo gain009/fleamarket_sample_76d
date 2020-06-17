@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  end
  
   get 'mypage/index', to: 'mypage#index'
   get 'logout/index', to: 'logout#index'
