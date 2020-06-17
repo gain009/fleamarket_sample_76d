@@ -21,7 +21,6 @@ describe Card do
       card = build(:card, card_id: nil)
       card.valid?
     end
-
     it 'user_idがない時は保存されないこと' do
       card = build(:card, user_id: nil)
       card.valid?
