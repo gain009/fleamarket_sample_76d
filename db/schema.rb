@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_050938) do
     t.string "first_name_kana", null: false
     t.date "birth_day", null: false
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

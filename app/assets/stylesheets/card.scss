@@ -1,3 +1,147 @@
-// Place all the styles related to the card controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// カード登録画面
+@mixin form {
+  height: 45px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+@mixin card_information {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.card {
+  background-color: #f5f5f5;
+  &___information {
+    height: 600px;
+    width: 600px;
+    margin: auto;
+    background-color: white;
+    h2 {
+      font-size: 20px;
+      text-align: center;
+      padding-bottom: 15px;
+      padding-top: 60px;
+    }
+    &__content {
+      width: 330px;
+      margin: auto;
+      padding-top: 20px;
+      border-top: 1px solid #f5f5f5 ;
+      &__detail {
+        margin-left: 16px;
+        label {
+          font-size: 15px;
+        }
+        &__image {
+          width: 300px;
+          height: 40px;
+          padding-top: 7px;
+          &-detail {
+            width: 100%;
+          }
+        }
+        &__form {
+          @include form;
+          width: 300px;
+          margin-top: 5px;
+        }
+        &__expire__date {
+          padding-top: 8px;
+          &__month {
+            @include form;
+            width: 100px;
+          }
+          &__year {
+            @include form;
+            width: 100px;
+          }
+          &__security {
+            margin-top: 15px;
+            &__code {
+              margin-top: 7px;
+              &__cvc {
+                @include form;
+                width: 300px;
+              }
+              &__submit {
+                margin-top: 20px;
+                &__button {
+                  @include form;
+                  width: 300px;
+                  background-color: $blue;
+                  color: white;
+                }
+                &__button:hover {
+                  background-color: #B5F3E1;
+                }
+              }
+            }
+          }
+        }
+      } 
+    }
+  }
+}
+
+
+
+// カード確認・削除画面
+
+.information {
+  height: calc(100vh - 290px);
+  background-color: #f5f5f5;
+  position: relative;
+  &__detail {
+    height: 75%;
+    width: 70%;
+    @include card_information;
+    &__card {
+      height: 28%;
+      font-size: 22px;
+      position: relative;
+      border-bottom: 1px solid #ccc;
+      background-color: white;
+      label {
+        font-weight: bold;
+        background-color: white;
+        @include card_information;
+      }
+      &__number {
+        height: 72%;
+        background-color: white;
+        &__date {
+          background-color: white;
+          height: 60%;
+          &__content {
+            text-align: center;
+            font-size: 19px;
+            padding-top: 8%;
+          }
+          &__expire {
+            text-align: center;
+            font-size: 19px;
+            padding-top: 2%;
+          }
+        }
+        &__button {
+          text-align: center;
+          margin-top: 15px;
+          button {
+            @include form;
+            width: 250px;
+            background-color: $blue;
+            color: white;
+            font-size: 15px;
+          }
+          button:hover {
+            background-color: #B5F3E1;
+          }
+        }
+      }
+    }
+  }
+}
