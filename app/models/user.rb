@@ -16,4 +16,6 @@ class User < ApplicationRecord
   has_many :items
   has_one :destination
   has_one :card
+
+  has_many :likes, dependent: :destroy
 end
