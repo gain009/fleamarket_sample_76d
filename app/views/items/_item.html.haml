@@ -1,7 +1,7 @@
 .list
   = link_to item_path(item.id), class: "list_link" do
     .list--img
-      = image_tag item.images[0].image
+      = image_tag item.images[0].image.url
         - if item.buyer_id.present?
         .list--img__sold
           .list--img__sold__inner SOLD
