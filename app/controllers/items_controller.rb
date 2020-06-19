@@ -117,7 +117,7 @@ class ItemsController < ApplicationController
   end
 
   def set_destination
-    @destination = Destination.find(params[:id])
+    @destination = Destination.find(current_user.id)
   end
 
 
