@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_brand
-  before_action :set_card, except: [:index]
-  before_action :set_destination, except: [:index, :new, :create]
+  before_action :set_card, except: [:index, :show]
+  before_action :set_destination, except: [:index, :show, :new, :create]
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
