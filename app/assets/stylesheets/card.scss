@@ -141,6 +141,13 @@
             background-color: #B5F3E1;
           }
         }
+        &-return {
+          padding-top: 20px;
+          text-align: center;
+          &__button {
+            color: black;
+          }
+        }
       }
     }
   }
