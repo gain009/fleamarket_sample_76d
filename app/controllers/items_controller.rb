@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
+  require 'payjp'
 
   before_action :authenticate_user!, only: [:buy_confirmation, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_brand
-  before_action :set_card, except: [:index, :show]
-  before_action :set_destination, except: [:index, :show, :new, :create]
+  before_action :set_card, except: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :set_destination, except: [:index, :new, :create]
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
@@ -53,8 +54,6 @@ class ItemsController < ApplicationController
   end
 
 
-
-
   def edit
     if current_user.id == @item.user_id
       flash[:notice] = ""
@@ -88,11 +87,15 @@ class ItemsController < ApplicationController
   end
 
   def buy_confirmation
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id])   
+    if @card.blank?
+      redirect_to controller: "card", action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+    end
   end
-
-
-
 
 
   private
@@ -110,10 +113,7 @@ class ItemsController < ApplicationController
   end
 
   def set_card
-    card = Card.find_by(user_id: current_user.id)
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    @default_card_information = customer.cards.retrieve(card.card_id)
+    @card = Card.find_by(user_id: current_user.id)
   end
 
   def set_destination

@@ -2,7 +2,7 @@
 .card__content
   .card__content__info
     .card__content__info__image
-      = image_tag @item.images[0].image.url
+      = image_tag(@item.images[0].image.url, size: '100x100')
     .card__content__info__message
       %h2 購入を確定しますか？
     .card__content__info__item

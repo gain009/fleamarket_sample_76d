@@ -8,6 +8,7 @@
     background-color:white;
     &__image {
       text-align: center;
+      padding-top: 20px;
     }
     @include card_information;
     &__message {

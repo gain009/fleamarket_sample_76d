@@ -50,4 +50,6 @@
                 .card___information__content__detail__expire__date__security__code__submit
                 #card_token
                 = submit_tag "追加する", id: "token_submit", class:"card___information__content__detail__expire__date__security__code__submit__button"
+              .card___information__content__detail__expire__date__security-return
+                = link_to "マイページへ戻る", mypage_index_path, {class: "card___information__content__detail__expire__date__security-return__button"}
 = render 'modules/sub_footer'

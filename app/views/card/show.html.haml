@@ -16,5 +16,7 @@
         = form_tag(delete_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
           %input{ type: "hidden", name: "card_id", value: "" }
           %button 削除する
+      .information__detail__card__number-return
+        = link_to "トップへ戻る", root_path, {class: "information__detail__card__number-return__button"}
 
 = render 'modules/sub_footer'
