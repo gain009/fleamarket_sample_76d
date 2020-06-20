@@ -44,10 +44,16 @@
       .content-detail.border
         .content__category
           %p 商品の詳細
-          %label カテゴリー
-          %span.required 必須
-          = f.collection_select :category_id, CategoryId.all, :id, :name, include_blank: "選択して下さい", required: ""
-          .content__size
+          = f.label :category_id do
+            カテゴリー
+            %span.required 必須
+            -# = f.select :category_id, @category_parent_array, {include_blank: "---", selected: @item.category.parent.parent.name}, {class: 'content__category__select-box', id: 'parent_category'}
+            = f.select :category_id, options_for_select(@category_parent_array.map{ |b| [b.name, b.id, {data: {category: b.id}}] }, selected: @item.category.parent.parent.id), {include_blank: "---"}, {class: 'content__category__select-box', id: 'parent_category'}
+            .content__category2#children_wrapper
+              = f.select :category_id, options_for_select(@category_children_array.map{ |b| [b.name, b.id, {data: {category: b.id}}] }, selected: @item.category.parent.id), {include_blank: "---"}, {class: 'content__category__select-box', id: 'child_category'}
+            .content__category3#grandchildren_wrapper
+              = f.select :category_id, options_for_select(@category_grandchildren_array.map{ |b| [b.name, b.id, {data: {category: b.id}}] }, selected: @item.category.id), {include_blank: "---"}, {class: 'content__category__select-box', id: 'grandchild_category'}
+        .content__size
           %label サイズ
           %span.required 必須
           = f.collection_select :size_id, Size.all, :id, :name, include_blank: "選択して下さい", required: ""
