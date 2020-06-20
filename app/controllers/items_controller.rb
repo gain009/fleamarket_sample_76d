@@ -21,11 +21,10 @@ class ItemsController < ApplicationController
     @item.images.new
     
     #カテゴリセレクトボックスの初期値設定
-    @category_parent_array = ["---"]
+    @category_parent_array = []
     #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-      
+      @category_parent_array << parent
     end
     flash[:notice] = ""
   end

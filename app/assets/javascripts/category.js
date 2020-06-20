@@ -31,12 +31,13 @@ jQuery(document).on('turbolinks:load', function(){
     }
     // 親カテゴリー選択後のイベント
     $('#parent_category').on('change', function(){
-      var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-      if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
+      var parentId = $('#parent_category option:selected').data('category'); //選択された親カテゴリーの名前を取得
+      var parentText = $('#parent_category option:selected').text();
+      if (parentText != "---"){ //親カテゴリーが初期値でないことを確認
         $.ajax({
           url: '/items/get_category_children',
           type: 'GET',
-          data: { parent_name: parentCategory },
+          data: { parent_id: parentId },
           dataType: 'json'
         })
         .done(function(children){
