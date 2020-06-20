@@ -31,7 +31,6 @@ jQuery(document).on('turbolinks:load', function(){
     }
     // 親カテゴリー選択後のイベント
     $('#parent_category').on('change', function(){
-      console.log("OK")
       var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
       if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
         $.ajax({
@@ -41,7 +40,7 @@ jQuery(document).on('turbolinks:load', function(){
           dataType: 'json'
         })
         .done(function(children){
-          $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
+          $('#children_wrapper').remove();
           $('#grandchildren_wrapper').remove();
           var insertHTML = '';
           children.forEach(function(child){
@@ -53,7 +52,7 @@ jQuery(document).on('turbolinks:load', function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{
-        $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
+        $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
         $('#grandchildren_wrapper').remove();
       }
     });
@@ -69,7 +68,7 @@ jQuery(document).on('turbolinks:load', function(){
         })
         .done(function(grandchildren){
           if (grandchildren.length != 0) {
-            $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+            $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
             var insertHTML = '';
             grandchildren.forEach(function(grandchild){
               insertHTML += appendOption(grandchild);
