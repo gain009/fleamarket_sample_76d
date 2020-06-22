@@ -1,5 +1,5 @@
 .items__item
-  = link_to item_path(item) do
+  = link_to item_path(item), data: {turbolinks: "false"} do
     .items__item__image
       = image_tag item.images[0].image.url, alt: "画像"
     .items__item__info
