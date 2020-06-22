@@ -102,6 +102,13 @@ $(document).on('turbolinks:load', function(){
       }
     });
 
+    // 画像の削除
+    $(document).on('click', '.delete-box', function() {
+      setLabel();
+      var index = $(this).attr('id').replace(/[^0-9]/g, '');
+      deleteImage(index);
+    });
+
     });
   });
 });
