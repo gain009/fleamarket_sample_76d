@@ -47,7 +47,6 @@
           = f.label :category_id do
             カテゴリー
             %span.required 必須
-            -# = f.select :category_id, @category_parent_array, {include_blank: "---", selected: @item.category.parent.parent.name}, {class: 'content__category__select-box', id: 'parent_category'}
             = f.select :category_id, options_for_select(@category_parent_array.map{ |b| [b.name, b.id, {data: {category: b.id}}] }, selected: @item.category.parent.parent.id), {include_blank: "---"}, {class: 'content__category__select-box', id: 'parent_category'}
             .content__category2#children_wrapper
               = f.select :category_id, options_for_select(@category_children_array.map{ |b| [b.name, b.id, {data: {category: b.id}}] }, selected: @item.category.parent.id), {include_blank: "---"}, {class: 'content__category__select-box', id: 'child_category'}
