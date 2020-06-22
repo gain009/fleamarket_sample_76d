@@ -53,7 +53,6 @@
             必須
           %br
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, class: 'input__group__content__box--pulldown'
-          -# = f.text_field :prefecture_id, {autofocus: true, placeholder: "例）大阪府", class: 'input__group__content__box'}
 
         .input__group__content
           %label.input__group__content__label
