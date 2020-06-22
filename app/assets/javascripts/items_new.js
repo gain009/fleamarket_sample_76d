@@ -7,6 +7,11 @@ $(document).on('turbolinks:load', function(){
                       <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
+                      <div class="edit-box" id="edit-btn-${index}">
+                        <div class="edit-btn">
+                          <span>編集</span>
+                        </div>
+                      </div>
                       <div class="delete-box" id="delete_btn_${index}">
                         <span>削除</span>
                       </div>
