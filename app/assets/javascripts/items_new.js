@@ -1,13 +1,13 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
 
-    function buildHTML(count) {
-      var html = `<div class="preview-box" id="preview-box__${count}">
+    function buildHTML(index) {
+      var html = `<div class="preview-box" id="preview-box__${index}">
                     <div class="upper-box">
                       <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
-                      <div class="delete-box" id="delete_btn_${count}">
+                      <div class="delete-box" id="delete_btn_${index}">
                         <span>削除</span>
                       </div>
                     </div>
@@ -82,17 +82,17 @@ $(document).on('turbolinks:load', function(){
           $('.label-content').show();
         }
         setLabel(count);
-        if(id < 5){
-          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+        if(index < 5){
+          $('.label-box').attr({index: `label-box--${index}`,for: `item_images_attributes_${index}_image`});
         }
       } else {
-        $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+        $(`#item_images_attributes_${index}__destroy`).prop('checked',true);
         if (count == 4) {
           $('.label-content').show();
         }
         setLabel();
-        if(id < 5){
-          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+        if(index < 5){
+          $('.label-box').attr({id: `label-box--${index}`,for: `item_images_attributes_${index}_image`});
         }
       }
     });
