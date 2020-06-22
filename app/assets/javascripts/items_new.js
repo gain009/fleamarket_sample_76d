@@ -109,6 +109,10 @@ $(document).on('turbolinks:load', function(){
       deleteImage(index);
     });
 
+    //画像の差し替え
+    $(document).on('click','.edit-box', function() {
+      var index = $(this).attr('id').replace(/[^0-9]/g, '');
+      $(`#item_images_attributes_${index}_image`).click();
     });
   });
 });
