@@ -17,6 +17,9 @@
                   .upper-box
                     = image_tag image.image.url, width: "112", height: "112", alt: "preview"
                   .lower-box
+                    .edit-box{id: "edit-btn-#{index}"}
+                      .edit-btn
+                        %span 編集
                     .delete-box
                       .delete-btn{data: {delete: {id: index}}}
                         %span 削除
